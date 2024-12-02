@@ -17,10 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from reservation import views as reservation_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('reservation.urls')),  
+    path('', reservation_views.index, name='index'), 
+    path('philosophy/', reservation_views.philosophy_view, name='philosophy'),
+    path('reservation/', include('reservation.urls')), 
     path('menu/', include('menu.urls')),    
     path('contact/', include('contact.urls')),  
+    path('thank_you/', reservation_views.thank_you_view, name='thank_you'),
 ]
