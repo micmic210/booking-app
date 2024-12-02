@@ -20,6 +20,7 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,17 +29,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-#arzz4b4_i(o&xr-#_tr7260dp!h-z@4lk47@$0lx--#*q0q=^'
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]',
-                 '8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
-                 '.herokuapp.com']
-
+ALLOWED_HOSTS = [
+    '8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
+    '.herokuapp.com'
+]
 
 
 # Application definition
@@ -50,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'reservation',
     'menu',
     'contact',
@@ -71,7 +74,7 @@ ROOT_URLCONF = 'my_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,27 +100,20 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-# }
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+CSRF_TRUSTED_ORIGINS = [ 
+    "https://*codeinstitute.net", 
+    "https://*.herokuapp.com"
+]
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
     'https://ramen-bar-booking-app.herokuapp.com'
 ]
-
 
 
 # Password validation
@@ -155,10 +151,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
