@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]',
                  '8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
@@ -108,6 +108,13 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
+    'https://ramen-bar-booking-app.herokuapp.com'
+]
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
