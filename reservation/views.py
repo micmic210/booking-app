@@ -1,7 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 
 def reservation(request):
-    return HttpResponse("Hello, Ramen Bar!")
+    """
+    Handles the reservation page request.
+    Renders the reservation.html template.
+    """
+    context = {
+        "page_title": "Reservation",  # Example of data to pass to the template
+    }
+    return render(request, 'reservation/reservation.html', context)
