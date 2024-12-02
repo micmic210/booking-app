@@ -99,33 +99,130 @@ We continually tweak and adjust this template to help give you the best experien
 
 It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
 
-**How will this affect me?**
+Debug Section
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### **Debug Log**
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+#### **1. Cloudinary Configuration Error**
+- **Issue**: A typo in the `CLOUDINARY_URL` environment variable caused the following error during startup:
+  ```
+  ValueError: Invalid CLOUDINARY_URL scheme. Expecting to start with 'cloudinary://'
+  ```
+- **Solution**:
+  1. Corrected the `CLOUDINARY_URL` in the `env.py` file.
+     - Correct format: `cloudinary://API_KEY:API_SECRET@CLOUD_NAME`
+  2. Restarted the server to verify the fix.
 
 ---
 
-Happy coding!
+#### **2. Static Files Configuration Error**
+- **Issue**: The `STATICFILES` directory was not found, resulting in the following error when running `collectstatic`:
+  ```
+  django.core.exceptions.ImproperlyConfigured: You're using the staticfiles app without having set the STATIC_ROOT setting to a filesystem path.
+  ```
+- **Solution**:
+  1. Added the following settings in `settings.py`:
+     ```python
+     STATIC_URL = 'static/'
+     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+     ```
+  2. Created the necessary directories:
+     ```bash
+     mkdir static staticfiles
+     ```
+  3. Ran `python manage.py collectstatic` to resolve the issue.
+
+---
+
+#### **3. CSRF Verification Error**
+- **Issue**: After deploying to Heroku, the following error occurred:
+  ```
+  Forbidden (403) CSRF verification failed. Request aborted.
+  ```
+- **Solution**:
+  1. Added `CSRF_TRUSTED_ORIGINS` to `settings.py`:
+     ```python
+     CSRF_TRUSTED_ORIGINS = [
+         "https://<your-app-name>.herokuapp.com",
+         "https://*.codeanyapp.com",
+     ]
+     ```
+  2. Set the environment variable on Heroku:
+     ```bash
+     heroku config:set CSRF_TRUSTED_ORIGINS=https://<your-app-name>.herokuapp.com
+     ```
+  3. Restarted the server to confirm the fix.
+
+---
+
+#### **4. allauth Middleware Error**
+- **Issue**: The `allauth.account.middleware.AccountMiddleware` was not added to `MIDDLEWARE`, leading to the following error:
+  ```
+  django.core.exceptions.ImproperlyConfigured: allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE
+  ```
+- **Solution**:
+  1. Added the middleware to `settings.py`:
+     ```python
+     'allauth.account.middleware.AccountMiddleware',
+     ```
+  2. Applied migrations using:
+     ```bash
+     python manage.py migrate
+     ```
+
+---
+
+#### **5. Reservation Form Not Displayed**
+- **Issue**: The `reservation.html` template did not display the form. Debugging revealed that the form was not correctly passed from the `reservation` view.
+- **Solution**:
+  1. Fixed the `reservation` view in `reservation/views.py`:
+     ```python
+     def reservation(request):
+         if request.method == 'POST':
+             form = ReservationForm(request.POST)
+             if form.is_valid():
+                 reservation = form.save()
+                 return redirect('confirmation', reservation_number=reservation.reservation_number)
+         else:
+             form = ReservationForm()
+         return render(request, 'reservation/reservation.html', {'form': form})
+     ```
+  2. Ensured the form code was properly added to the template.
+
+---
+
+#### **6. Cloudinary Configuration for Menu Management**
+- **Issue**: Menu images were not being uploaded due to missing Cloudinary configuration.
+- **Solution**:
+  1. Updated the `menu/models.py` to include the Cloudinary field:
+     ```python
+     from cloudinary.models import CloudinaryField
+
+     class Menu(models.Model):
+         name = models.CharField(max_length=100)
+         description = models.TextField(blank=True, null=True)
+         price = models.DecimalField(max_digits=6, decimal_places=2)
+         category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='ramen')
+         image = CloudinaryField('image', folder="menu_images/")
+         is_available = models.BooleanField(default=True)
+         created_at = models.DateTimeField(auto_now_add=True)
+
+         def __str__(self):
+             return self.name
+     ```
+  2. Ran migrations:
+     ```bash
+     python manage.py makemigrations
+     python manage.py migrate
+     ```
+
+---
+
+### **Key Learnings and Reflections**
+1. **Accuracy with Environment Variables**: Typos in `env.py` led to errors. Always verify environment variables before deployment.
+2. **Static Files Management**: Reinforced understanding of Django's static files handling.
+3. **Prioritizing Error Resolution**: Addressing errors sequentially simplified debugging.
+4. **Code Reusability**: Leveraging prior project code significantly improved efficiency.
+
+
