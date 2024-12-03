@@ -1,95 +1,120 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load crispy_forms_tags %}
-
 {% block content %}
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Blog Title -->
-                <h1 class="post-title">{{ blog.title }}</h1>
-                <!-- Author and Created Date -->
-                <p class="post-subtitle">{{ blog.author }} | {{ blog.created_on }}</p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in blog.featured_image.url %}
-                <!-- Placeholder image if no featured image is provided -->
-                <img src="{% static 'images/default.jpg' %}" class="scale" alt="placeholder">
-                {% else %}
-                <!-- Display the featured image -->
-                <img src="{{ blog.featured_image.url }}" class="scale" alt="{{ blog.title }}">
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4 mt-3">
-            <div class="card-body">
-                <!-- Blog Content -->
-                <article class="card-text">
-                    {{ blog.content | safe }}
-                </article>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <!-- Display the comment count -->
-            <strong class="text-secondary">
-                <i class="far fa-comments"></i> {{ comment_count }}
-            </strong>
-        </div>
-        <div class="col-12">
+        <!-- 左側の投稿内容とコメント一覧 -->
+        <div class="col-md-8">
+            <h1>{{ blog.title }}</h1>
+            <p><small>Written by {{ blog.author }} on {{ blog.created_on }}</small></p>
+
+            {% if blog.featured_image %}
+            <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="img-fluid mb-4">
+            {% else %}
+            <p>No image available for this post.</p>
+            {% endif %}
+
+            <p>{{ blog.content }}</p>
+
             <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 card mb-4 mt-3">
-            <h3>Comments:</h3>
-            <div class="card-body">
-                <!-- Loop through comments -->
+
+            <h3>Comments ({{ comment_count }})</h3>
+            <div>
                 {% for comment in comments %}
-                <div class="p-2 comments{% if not comment.approved %} d-none{% endif %}">
-                    <!-- Display the comment author and creation date -->
-                    <p class="font-weight-bold">
-                        {{ comment.author }}
-                        <span class="font-weight-normal">
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    <!-- Display the comment body -->
-                    <div id="comment{{ comment.id }}">
-                        {{ comment.body | linebreaks }}
-                    </div>
+                <div class="comment">
+                    <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
+
+                    {% if user == comment.author %}
+                    <!-- 編集と削除ボタン -->
+                    <a href="{% url 'comment_edit' blog.id comment.id %}" class="btn btn-sm btn-primary">Edit</a>
+                    <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
+                    {% endif %}
+
+                    {% if edit_comment == comment %}
+                    <!-- 編集フォーム -->
+                    <form method="post" class="mt-2" id="editForm-{{ comment.id }}">
+                        {% csrf_token %}
+                        {{ comment_form.body }}
+                        <button class="btn btn-sm btn-success" type="button" onclick="confirmSaveChanges('{{ comment.id }}')">
+                            Submit
+                        </button>
+                    </form>
+                    {% endif %}
                 </div>
+                <hr>
                 {% empty %}
-                <!-- Fallback message if there are no comments -->
                 <p>No comments yet.</p>
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-4 card mb-4 mt-3">
-            <div class="card-body">
-                {% if user.is_authenticated %}
-                <!-- Comment Form -->
-                <h3>Leave a comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form id="commentForm" method="post" style="margin-top: 1.3em;">
-                    <!-- Display the form fields -->
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-primary btn-lg">Submit</button>
-                </form>
-                {% else %}
-                <!-- Message for unauthenticated users -->
-                <p>Please log in to leave a comment.</p>
-                {% endif %}
+
+        <!-- 右側のコメント投稿・編集ボックス -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    {% if edit_comment %}
+                    <h3>Edit your comment</h3>
+                    <form method="post" class="mt-2">
+                        {% csrf_token %}
+                        {{ comment_form.body }}
+                        <button class="btn btn-primary mt-3" type="submit">Save Changes</button>
+                    </form>
+                    {% elif user.is_authenticated %}
+                    <h3>Leave a comment</h3>
+                    <form method="post" class="mt-2">
+                        {% csrf_token %}
+                        {{ comment_form.body }}
+                        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    </form>
+                    {% else %}
+                    <p>Please log in to leave a comment.</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock content %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmSaveChanges(commentId) {
+        Swal.fire({
+            title: 'Save Changes',
+            text: "Do you want to save these changes?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formId = `editForm-${commentId}`;
+                const form = document.getElementById(formId);
+
+                if (form) {
+                    form.submit();
+                } else {
+                    console.error(`Form with ID ${formId} not found.`);
+                }
+            }
+        });
+    }
+
+    function confirmDelete(blogId, commentId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you really want to delete this comment?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `/blog/${blogId}/comment/${commentId}/delete/`;
+            }
+        });
+    }
+</script>
+
+{% endblock %}
