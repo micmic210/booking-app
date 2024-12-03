@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 
 
 @admin.register(Post)
@@ -8,3 +8,6 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('status', 'author', 'created_on')
     search_fields = ('title', 'content')
     ordering = ['-created_on']
+
+admin.site.register(Comment) 
+
