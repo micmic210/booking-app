@@ -225,4 +225,122 @@ Debug Section
 3. **Prioritizing Error Resolution**: Addressing errors sequentially simplified debugging.
 4. **Code Reusability**: Leveraging prior project code significantly improved efficiency.
 
+Based on the screenshot, I understand you are referring to a Markdown style that includes **code blocks** for commands and descriptions, often displayed in "boxes." Below is the updated debugging history formatted in a style consistent with your screenshot:
+
+---
+
+## Debugging History for Blog Features
+
+### 1. **Comment Editing and Deletion Issues**
+
+#### Problem
+- The modal for confirming comment edits appeared at the wrong timing.
+- Editing functionality sometimes did not save changes correctly.
+- Inline editing forms occasionally displayed rendering errors.
+
+#### Solution
+```bash
+# Fixed the timing of the modal appearance
+- Adjusted the `confirmSaveChanges` JavaScript function to ensure the modal appears after clicking the "Submit" button in the edit form.
+- Correctly mapped the `comment_form` instance to the respective comment in the template (`blog_detail.html`).
+- Updated inline form rendering logic with unique ID management to avoid conflicts.
+```
+
+---
+
+### 2. **Incorrect Button States**
+
+#### Problem
+- Both "Edit" and "Delete" buttons displayed inconsistently styled buttons.
+- Buttons sometimes appeared for unauthorized users or in duplicate.
+
+#### Solution
+```bash
+# Updated button logic and styling
+- Rewrote the conditional rendering logic in `blog_detail.html` to restrict button display to comment authors only.
+- Standardized button styles using Bootstrap 4 classes.
+```
+
+---
+
+### 3. **LIKE Button Implementation**
+
+#### Problem
+- The LIKE functionality allowed unliking, which was against the specification.
+- Button styles and text were inconsistent with the desired design.
+- AJAX requests failed occasionally due to missing CSRF tokens.
+
+#### Solution
+```bash
+# Added CSRF token dynamically and restricted unliking
+- Restricted "unlike" by disabling the LIKE button after it is clicked.
+- Added `Font Awesome` thumbs-up icons for the LIKE button.
+- Enhanced `views.py` to handle already liked posts and provide proper JSON responses.
+- Integrated CSRF tokens dynamically into AJAX headers.
+```
+
+---
+
+### 4. **Rendering Errors in JavaScript and HTML**
+
+#### Problem
+- JavaScript syntax errors caused runtime failures in confirmation modals.
+- Variables in `confirmSaveChanges` and `confirmDelete` functions were not properly scoped or referenced.
+
+#### Solution
+```bash
+# Fixed JavaScript syntax errors
+- Corrected syntax and used template literals for dynamic ID references.
+- Added error handling and console logging for debugging missing elements.
+```
+
+---
+
+### 5. **Comments Misaligned with Post Content**
+
+#### Problem
+- Comment submission boxes were not aligned properly with the layout.
+- Headers for "Edit Comment" and "Leave a Comment" were inconsistent.
+
+#### Solution
+```bash
+# Updated layout and styling for comments
+- Adjusted the `blog_detail.html` layout using the Bootstrap 4 grid system to align comments to the right sidebar.
+- Standardized headers to user-friendly text like "Leave a Comment" and "Edit Your Comment."
+```
+
+---
+
+### 6. **Miscellaneous Fixes**
+
+```bash
+- Removed redundant code for comment approval since it was not required for the current setup.
+- Added tooltips and improved button descriptions for accessibility.
+- Improved error messages in `views.py` to be more user-friendly.
+```
+
+---
+
+### **Code Highlights**
+
+#### Improved `views.py`
+```python
+# Enhanced error handling for comment_edit and comment_delete
+if comment.author != request.user:
+    messages.error(request, "You are not authorized to edit this comment.")
+    return redirect('blog_detail', id=blog.id)
+```
+
+#### Enhanced `blog_detail.html`
+```html
+<!-- LIKE Button -->
+<button id="likeButton" 
+        class="btn btn-primary" 
+        data-id="{{ blog.id }}" 
+        {% if user in blog.likes.all %} disabled {% endif %}>
+    <i class="fa {% if user in blog.likes.all %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}"></i>
+    {% if user in blog.likes.all %}Liked{% else %}Like{% endif %}
+</button>
+```
+
 
