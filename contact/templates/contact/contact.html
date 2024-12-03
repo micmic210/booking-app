@@ -6,6 +6,7 @@
 <h1>Contact Us</h1>
 <form action="" method="POST">
     {% csrf_token %}
+    {{ form.as_p }}
     <!-- Contact form fields here -->
     <button type="submit">Send</button>
 </form>
