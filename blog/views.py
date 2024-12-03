@@ -140,3 +140,37 @@ def comment_delete(request, id, comment_id):
     
     return redirect('blog_detail', id=blog.id)
 
+
+from django.http import JsonResponse
+
+def like_post(request, id):
+    """
+    Handles the like/unlike functionality for a blog post.
+    - Toggles like status for the current user on the specified post.
+
+    Args:
+    - request: The HTTP request object.
+    - id: The ID of the blog post to like/unlike.
+
+    Returns:
+    - JSON response with the current like status and total like count.
+    """
+    post = get_object_or_404(Post, id=id)
+
+    if request.user.is_authenticated:
+        if request.user in post.likes.all():
+            # Unlike the post
+            post.likes.remove(request.user)
+            liked = False
+        else:
+            # Like the post
+            post.likes.add(request.user)
+            liked = True
+
+        return JsonResponse({
+            'liked': liked,
+            'likes_count': post.likes.count(),
+        })
+    else:
+        return JsonResponse({'error': 'You must be logged in to like posts.'}, status=401)
+
