@@ -3,11 +3,14 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
+
+{% load crispy_forms_tags %}
+
 <h1>Contact Us</h1>
-<form action="" method="POST">
+<form action="" method="POST" class="p-4 border rounded bg-light">
     {% csrf_token %}
-    {{ form.as_p }}
-    <!-- Contact form fields here -->
-    <button type="submit">Send</button>
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Send</button>
 </form>
+
 {% endblock %}
