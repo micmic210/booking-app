@@ -2,81 +2,74 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-        <!-- 左側の投稿内容とコメント一覧 -->
-        <div class="col-md-8">
-            <h1>{{ blog.title }}</h1>
-            <p><small>Written by {{ blog.author }} on {{ blog.created_on }}</small></p>
+    <!-- Blog Post Title and Metadata -->
+    <h1>{{ blog.title }}</h1>
+    <p><small>Written by {{ blog.author }} on {{ blog.created_on }}</small></p>
 
-            {% if blog.featured_image %}
-            <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="img-fluid mb-4">
-            {% else %}
-            <p>No image available for this post.</p>
+    <!-- Featured Image -->
+    {% if blog.featured_image %}
+    <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="img-fluid mb-4">
+    {% else %}
+    <p>No image available for this post.</p>
+    {% endif %}
+
+    <!-- Blog Content -->
+    <p>{{ blog.content }}</p>
+
+    <hr>
+
+    <!-- Comments Section -->
+    <h3>Comments ({{ comment_count }})</h3>
+    <div>
+        {% for comment in comments %}
+        <div class="comment">
+            <!-- Display comment author and body -->
+            <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
+
+            <!-- Edit and Delete Buttons for the comment author -->
+            {% if user == comment.author %}
+            <a href="{% url 'comment_edit' blog.id comment.id %}" class="btn btn-sm btn-primary">Edit</a>
+            <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
             {% endif %}
 
-            <p>{{ blog.content }}</p>
-
-            <hr>
-
-            <h3>Comments ({{ comment_count }})</h3>
-            <div>
-                {% for comment in comments %}
-                <div class="comment">
-                    <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
-
-                    {% if user == comment.author %}
-                    <!-- 編集と削除ボタン -->
-                    <a href="{% url 'comment_edit' blog.id comment.id %}" class="btn btn-sm btn-primary">Edit</a>
-                    <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
-                    {% endif %}
-
-                    {% if edit_comment == comment %}
-                    <!-- 編集フォーム -->
-                    <form method="post" class="mt-2" id="editForm-{{ comment.id }}">
-                        {% csrf_token %}
-                        {{ comment_form.body }}
-                        <button class="btn btn-sm btn-success" type="button" onclick="confirmSaveChanges('{{ comment.id }}')">
-                            Submit
-                        </button>
-                    </form>
-                    {% endif %}
-                </div>
-                <hr>
-                {% empty %}
-                <p>No comments yet.</p>
-                {% endfor %}
-            </div>
+            <!-- Inline Edit Form -->
+            {% if edit_comment == comment %}
+            <form method="post" class="mt-2" id="editForm-{{ comment.id }}">
+                {% csrf_token %}
+                {{ comment_form.body }}
+                <button class="btn btn-sm btn-success" type="button" onclick="confirmSaveChanges('{{ comment.id }}')">
+                    Submit
+                </button>
+            </form>
+            {% endif %}
         </div>
-
-        <!-- 右側のコメント投稿・編集ボックス -->
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    {% if edit_comment %}
-                    <h3>Edit your comment</h3>
-                    <form method="post" class="mt-2">
-                        {% csrf_token %}
-                        {{ comment_form.body }}
-                        <button class="btn btn-primary mt-3" type="submit">Save Changes</button>
-                    </form>
-                    {% elif user.is_authenticated %}
-                    <h3>Leave a comment</h3>
-                    <form method="post" class="mt-2">
-                        {% csrf_token %}
-                        {{ comment_form.body }}
-                        <button class="btn btn-primary mt-3" type="submit">Submit</button>
-                    </form>
-                    {% else %}
-                    <p>Please log in to leave a comment.</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+        <hr>
+        {% empty %}
+        <!-- Message if no comments are available -->
+        <p>No comments yet.</p>
+        {% endfor %}
     </div>
+
+    <!-- Leave a Comment Section -->
+    {% if user.is_authenticated %}
+    <h3>Leave a comment:</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ comment_form.body }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% else %}
+    <p>Please log in to leave a comment.</p>
+    {% endif %}
 </div>
 
+<!-- SweetAlert2 JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    /**
+     * Confirm save changes action using SweetAlert2.
+     * Prompts the user to confirm before submitting the edit form.
+     */
     function confirmSaveChanges(commentId) {
         Swal.fire({
             title: 'Save Changes',
@@ -88,6 +81,7 @@
             confirmButtonText: 'Yes, save it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                // Locate the edit form by its ID and submit it
                 const formId = `editForm-${commentId}`;
                 const form = document.getElementById(formId);
 
@@ -100,6 +94,10 @@
         });
     }
 
+    /**
+     * Confirm delete action using SweetAlert2.
+     * Prompts the user to confirm before deleting a comment.
+     */
     function confirmDelete(blogId, commentId) {
         Swal.fire({
             title: 'Are you sure?',
@@ -111,6 +109,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                // Redirect to the delete URL for the comment
                 window.location.href = `/blog/${blogId}/comment/${commentId}/delete/`;
             }
         });
