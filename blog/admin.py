@@ -8,7 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     Admin configuration for blog posts
     """
     list_display = ('title', 'author', 'status', 'created_on')
-    list_filter = ('status', 'author', 'created_on')
+    list_filter = ('status', 'author', 'created_on', 'categories')
     search_fields = ('title', 'content')
     ordering = ['-created_on']
 
