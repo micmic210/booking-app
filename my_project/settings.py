@@ -13,37 +13,37 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
 if os.path.isfile('env.py'):
     import env
 
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Ensure env.py is loaded
 BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = os.path.join(BASE_DIR, 'env.py')
+if os.path.exists(env_path):
+    exec(open(env_path).read())
+    
+# Debug print for DATABASE_URL
+print("DATABASE_URL in settings:", os.environ.get("DATABASE_URL"))
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-#arzz4b4_i(o&xr-#_tr7260dp!h-z@4lk47@$0lx--#*q0q=^'
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
 DEBUG = False
-
 
 ALLOWED_HOSTS = [
     '8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
     '.herokuapp.com'
 ]
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,17 +72,16 @@ LOGOUT_REDIRECT_URL = '/'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware', 
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'my_project.urls'
@@ -105,36 +104,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(
+        str(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")),  # デフォルトはSQLite
+        conn_max_age=600,  # キャッシュのための最大接続時間
+        ssl_require=True   # 必要に応じてSSL接続を要求
+    )
 }
 
-CSRF_TRUSTED_ORIGINS = [ 
-    "https://*codeinstitute.net", 
-    "https://*.herokuapp.com"
-]
-
-
+# CSRF Settings
 CSRF_TRUSTED_ORIGINS = [
+    "https://*codeinstitute.net",
+    "https://*.herokuapp.com",
     'https://8000-micmic210-bookingapp-ksnq98m924i.ws.codeinstitute-ide.net',
     'https://ramen-bar-booking-app.herokuapp.com'
 ]
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -154,7 +143,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -163,21 +151,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
