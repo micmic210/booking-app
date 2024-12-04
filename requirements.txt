@@ -9,3 +9,4 @@ psycopg2==2.9.10
 sqlparse==0.5.2
 urllib3==1.26.20
 whitenoise==6.5.0
+crispy-bootstrap5==0.7
