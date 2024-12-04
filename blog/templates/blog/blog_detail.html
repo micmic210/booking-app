@@ -16,7 +16,7 @@
     {% endif %}
 
     <!-- Blog Content -->
-    <p>{{ blog.content }}</p>
+    <p>{{ blog.content|linebreaksbr }}</p>
 
     <hr>
 
@@ -40,7 +40,7 @@
         {% for comment in comments %}
         <div class="comment">
             <!-- Display comment author and body -->
-            <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
+            <p><strong>{{ comment.author }}</strong>{{ comment.body }}</p>
 
             <!-- Edit and Delete Buttons for the comment author -->
             {% if user == comment.author %}

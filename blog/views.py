@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Category
 from .forms import CommentForm
+from django.http import JsonResponse
+
 
 
 class PostList(generic.ListView):
