@@ -1,0 +1,36 @@
+<!-- logout.html -->
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags %}
+
+{% block content %}
+<div class="signout-container mt-5">
+    <h2>Custom Logout</h2>
+    <p>You have been successfully logged out.</p>
+    <p><a href="{% url 'account_login' %}">Click here to log in again</a></p>
+</div>
+
+<!-- Hide Account Connections section in Logout page -->
+<style>
+    .account-connections {
+        display: none;
+    }
+
+    .signout-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa; /* ライトグレー */
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .signout-container h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #343a40; /* ダークグレー */
+    }
+</style>
+
+{% endblock %}
+
