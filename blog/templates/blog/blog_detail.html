@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
 {% block content %}
 
 <div class="container">
@@ -16,7 +14,7 @@
     {% endif %}
 
     <!-- Blog Content -->
-    <p>{{ blog.content|linebreaksbr }}</p>
+    <p>{{ blog.content }}</p>
 
     <hr>
 
@@ -40,7 +38,7 @@
         {% for comment in comments %}
         <div class="comment">
             <!-- Display comment author and body -->
-            <p><strong>{{ comment.author }}</strong>{{ comment.body }}</p>
+            <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
 
             <!-- Edit and Delete Buttons for the comment author -->
             {% if user == comment.author %}
@@ -71,7 +69,7 @@
     <h3>Leave a comment:</h3>
     <form method="post">
         {% csrf_token %}
-        {{ comment_form|crispy }}
+        {{ comment_form.body }}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     {% else %}

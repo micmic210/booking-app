@@ -1,23 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ReservationForm
 from .models import Reservation
-from django.template.loader import select_template
-from django.http import HttpResponse  #  debug
-
-# Debug view to check which template is being loaded
-def debug_template_view(request):
-    """
-    Debugs the template used for signup.
-    """
-    template = select_template(['allauth/account/signup.html'])
-    return HttpResponse(f"Loaded template: {template.origin}")
-
-# Debug view to verify signup template rendering
-def debug_signup_template_view(request):
-    """
-    Checks and renders the signup template explicitly for debugging.
-    """
-    return render(request, 'allauth/account/signup.html')
 
 # Create your views here.
 

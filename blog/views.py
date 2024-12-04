@@ -2,36 +2,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Post, Comment, Category
+from .models import Post, Comment
 from .forms import CommentForm
-from django.http import JsonResponse
-
 
 
 class PostList(generic.ListView):
     """
-    Displays a list of published blog posts, with optional category filtering.
+    Displays a list of published blog posts.
     - Retrieves all posts with status=1 (Published).
     - Paginated by 6 posts per page.
     """
     model = Post
+    queryset = Post.objects.filter(status=1)
     template_name = 'blog/blog.html'
     context_object_name = 'posts'
     paginate_by = 6
-
-    def get_queryset(self):
-        """
-        Returns the queryset of posts, optionally filtered by category.
-        """
-        category_id = self.request.GET.get('category')
-        if category_id:
-            return Post.objects.filter(categories__id=category_id, status=1)
-        return Post.objects.filter(status=1)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()  
-        return context
 
 
 def blog_detail(request, id):
@@ -39,6 +24,13 @@ def blog_detail(request, id):
     Displays a single blog post along with its comments and a comment form.
     - Handles comment submission if the request method is POST.
     - Returns the blog post, comments, and the comment form for the template.
+
+    Args:
+    - request: The HTTP request object.
+    - id: The ID of the blog post.
+
+    Returns:
+    - Renders 'blog/blog_detail.html' with the post, comments, and comment form.
     """
     # Get the blog post by ID or return a 404 error if not found
     blog = get_object_or_404(Post, id=id)
@@ -76,6 +68,16 @@ def blog_detail(request, id):
 def comment_edit(request, id, comment_id):
     """
     Edit a specific comment directly on the blog detail page.
+    - Ensures that only the author of the comment can edit it.
+    - Returns the edited comment form or updates the comment on POST.
+
+    Args:
+    - request: The HTTP request object.
+    - id: The ID of the blog post.
+    - comment_id: The ID of the comment to edit.
+
+    Returns:
+    - Renders 'blog/blog_detail.html' with the edit form or redirects after editing.
     """
     # Get the blog post and comment by their IDs or return a 404 error
     blog = get_object_or_404(Post, id=id)
@@ -114,6 +116,16 @@ def comment_edit(request, id, comment_id):
 def comment_delete(request, id, comment_id):
     """
     Delete a specific comment.
+    - Ensures that only the author of the comment can delete it.
+    - Deletes the comment on POST and redirects to the blog detail page.
+
+    Args:
+    - request: The HTTP request object.
+    - id: The ID of the blog post.
+    - comment_id: The ID of the comment to delete.
+
+    Returns:
+    - Redirects to the blog detail page after deletion.
     """
     # Get the blog post and comment by their IDs or return a 404 error
     blog = get_object_or_404(Post, id=id)
@@ -129,17 +141,29 @@ def comment_delete(request, id, comment_id):
     return redirect('blog_detail', id=blog.id)
 
 
+from django.http import JsonResponse
+
 def like_post(request, id):
     """
     Handles the like/unlike functionality for a blog post.
+    - Toggles like status for the current user on the specified post.
+
+    Args:
+    - request: The HTTP request object.
+    - id: The ID of the blog post to like/unlike.
+
+    Returns:
+    - JSON response with the current like status and total like count.
     """
     post = get_object_or_404(Post, id=id)
 
     if request.user.is_authenticated:
         if request.user in post.likes.all():
+            # Unlike the post
             post.likes.remove(request.user)
             liked = False
         else:
+            # Like the post
             post.likes.add(request.user)
             liked = True
 
@@ -149,3 +173,4 @@ def like_post(request, id):
         })
     else:
         return JsonResponse({'error': 'You must be logged in to like posts.'}, status=401)
+

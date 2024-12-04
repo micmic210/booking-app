@@ -18,7 +18,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from reservation import views as reservation_views
-from reservation.views import debug_template_view, debug_signup_template_view  # 追加デバッグビュー
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +28,4 @@ urlpatterns = [
     path('menu/', include('menu.urls')), 
     path('contact/', include('contact.urls')), 
     path('blog/', include('blog.urls')), 
-    # デバッグビュー
-    path('debug-template/', debug_template_view, name='debug-template'),
-    path('debug-signup-template/', debug_signup_template_view, name='debug-signup-template'),
 ]
