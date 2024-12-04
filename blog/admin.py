@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
 
 
 @admin.register(Post)
@@ -22,4 +22,11 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('author__username', 'body')
 
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for categories
+    """
+    list_display = ('name', 'description')  
+    ordering = ['name'] 
 
