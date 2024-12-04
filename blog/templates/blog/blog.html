@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static crispy_forms_tags %}
+
 {% load static %}
 
 {% block title %}Blog List{% endblock %}
@@ -7,6 +9,18 @@
 <div class="container">
     <!-- Page Header -->
     <h1 class="my-4">Blog Posts</h1>
+
+    <!-- Category Filter Form -->
+    <form method="get" action="{% url 'blog' %}">
+        <select name="category" class="form-select">
+            <option value="">All Categories</option>
+            {% for category in categories %}
+            <option value="{{ category.id }}" {% if category.id == request.GET.category %}selected{% endif %}>
+                {{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
 
     <div class="row">
         <!-- Iterate over all posts -->
