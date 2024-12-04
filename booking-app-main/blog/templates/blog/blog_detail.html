@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <!-- Blog Post Title and Metadata -->
+    <h1>{{ blog.title }}</h1>
+    <p><small>Written by {{ blog.author }} on {{ blog.created_on }}</small></p>
+
+    <!-- Featured Image -->
+    {% if blog.featured_image %}
+    <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="img-fluid mb-4">
+    {% else %}
+    <p>No image available for this post.</p>
+    {% endif %}
+
+    <!-- Blog Content -->
+    <p>{{ blog.content }}</p>
+
+    <hr>
+
+    <!-- Like Button Section -->
+    <div class="mb-4">
+        <button id="likeButton" 
+                class="btn btn-primary" 
+                data-id="{{ blog.id }}" 
+                {% if user in blog.likes.all %} disabled {% endif %}>
+            <i class="fa {% if user in blog.likes.all %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}"></i>
+            {% if user in blog.likes.all %}Liked{% else %}Like{% endif %}
+        </button>
+        <span id="likesCount">{{ blog.likes.count }}</span>
+    </div>
+
+    <hr>
+
+    <!-- Comments Section -->
+    <h3>Comments ({{ comment_count }})</h3>
+    <div>
+        {% for comment in comments %}
+        <div class="comment">
+            <!-- Display comment author and body -->
+            <p><strong>{{ comment.author }}</strong>: {{ comment.body }}</p>
+
+            <!-- Edit and Delete Buttons for the comment author -->
+            {% if user == comment.author %}
+            <a href="{% url 'comment_edit' blog.id comment.id %}" class="btn btn-sm btn-primary">Edit</a>
+            <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
+            {% endif %}
+
+            <!-- Inline Edit Form -->
+            {% if edit_comment == comment %}
+            <form method="post" class="mt-2" id="editForm-{{ comment.id }}">
+                {% csrf_token %}
+                {{ comment_form.body }}
+                <button class="btn btn-sm btn-success" type="button" onclick="confirmSaveChanges('{{ comment.id }}')">
+                    Submit
+                </button>
+            </form>
+            {% endif %}
+        </div>
+        <hr>
+        {% empty %}
+        <!-- Message if no comments are available -->
+        <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Leave a Comment Section -->
+    {% if user.is_authenticated %}
+    <h3>Leave a comment:</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ comment_form.body }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% else %}
+    <p>Please log in to leave a comment.</p>
+    {% endif %}
+</div>
+
+<!-- Add Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- SweetAlert2 JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    /**
+     * Confirm save changes action using SweetAlert2.
+     * Prompts the user to confirm before submitting the edit form.
+     */
+    function confirmSaveChanges(commentId) {
+        Swal.fire({
+            title: 'Save Changes',
+            text: "Do you want to save these changes?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formId = `editForm-${commentId}`;
+                const form = document.getElementById(formId);
+
+                if (form) {
+                    form.submit();
+                } else {
+                    console.error(`Form with ID ${formId} not found.`);
+                }
+            }
+        });
+    }
+
+    /**
+     * Confirm delete action using SweetAlert2.
+     * Prompts the user to confirm before deleting a comment.
+     */
+    function confirmDelete(blogId, commentId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you really want to delete this comment?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `/blog/${blogId}/comment/${commentId}/delete/`;
+            }
+        });
+    }
+
+    /**
+     * Handle LIKE button click.
+     * Sends a POST request to the server to toggle the like status.
+     */
+    document.getElementById('likeButton').addEventListener('click', function () {
+        const postId = this.getAttribute('data-id');
+
+        fetch(`/blog/like/${postId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                this.disabled = true;  // Disable the button after liking
+                this.innerHTML = '<i class="fa fa-thumbs-up"></i> Liked';
+                document.getElementById('likesCount').textContent = data.likes_count;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+{% endblock %}
