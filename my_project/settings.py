@@ -15,7 +15,8 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
-
+from django.conf import settings
+print(settings.TEMPLATES)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

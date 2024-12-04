@@ -1,0 +1,17 @@
+<!-- login.html -->
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Custom Log In</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form|crispy }}
+        </div>
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+</div>
+{% endblock %}

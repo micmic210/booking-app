@@ -1,0 +1,21 @@
+<!-- logout.html -->
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Custom Logout</h2>
+    <p>You have been successfully logged out.</p>
+    <p><a href="{% url 'account_login' %}">Click here to log in again</a></p>
+</div>
+
+<!-- Hide Account Connections section in Logout page -->
+<style>
+    .account-connections {
+        display: none;
+    }
+</style>
+
+{% endblock %}
+
