@@ -1,89 +1,76 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Blog List{% endblock %}
+{% block title %}
+Blog List - Ramen Bar
+{% endblock %}
 
 {% block content %}
-<div class="container">
-    <!-- Page Header -->
-    <h1 class="my-4">Blog Posts</h1>
 
-    <div class="row">
-        <!-- Iterate over all posts -->
-        {% for post in posts %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <!-- Display featured image -->
-                {% if "placeholder" in post.featured_image.url %}
-                <!-- Display a default placeholder image if no featured image is available -->
-                <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="placeholder">
-                {% else %}
-                <!-- Display the post's featured image -->
-                <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
-                {% endif %}
+<!-- Common Header Section -->
+<section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative">
+        <h1 class="display-4 font-weight-bold">Our Blog</h1>
+        <p class="lead mb-4">Stay updated with our latest news and stories</p>
+    </div>
+</section>
 
-                <div class="card-body">
-                    <!-- Display post title as a clickable link -->
-                    <h5 class="card-title">
-                        <a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a>
-                    </h5>
-                    <!-- Display the author and the post's creation date -->
-                    <p class="card-text">
-                        <small class="text-muted">Written by {{ post.author }} on {{ post.created_on }}</small>
-                    </p>
+<!-- Blog List Content Section -->
+<section id="blog-list" class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Iterate over all posts -->
+            {% for post in posts %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if "placeholder" in post.featured_image.url %}
+                    <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="placeholder">
+                    {% else %}
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.excerpt }}</p>
+                        <a href="{% url 'blog_detail' post.id %}" class="btn btn-dark">Read More</a>
+                    </div>
                 </div>
             </div>
+            {% empty %}
+            <p class="text-center">No posts available at the moment.</p>
+            {% endfor %}
         </div>
-        {% empty %}
-        <!-- Display a message if there are no posts available -->
-        <p>No posts available at the moment.</p>
-        {% endfor %}
+
+        <!-- Pagination -->
+        <div class="pagination mt-4">
+            {% if is_paginated %}
+            <nav>
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">&laquo;&laquo;</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">&laquo;</a>
+                    </li>
+                    {% endif %}
+
+                    <li class="page-item disabled">
+                        <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                    </li>
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
     </div>
-
-    <!-- Pagination Section -->
-    <div class="pagination mt-4">
-        {% if is_paginated %}
-        <nav>
-            <ul class="pagination justify-content-center">
-                {% if page_obj.has_previous %}
-                <!-- Link to the first page -->
-                <li class="page-item">
-                    <a class="page-link" href="?page=1" aria-label="First">
-                        <span aria-hidden="true">&laquo;&laquo;</span>
-                    </a>
-                </li>
-                <!-- Link to the previous page -->
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-
-                <!-- Current page info -->
-                <li class="page-item disabled">
-                    <span class="page-link">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                    </span>
-                </li>
-
-                {% if page_obj.has_next %}
-                <!-- Link to the next page -->
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-                <!-- Link to the last page -->
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
-                        <span aria-hidden="true">&raquo;&raquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% endif %}
-    </div>
-</div>
+</section>
 {% endblock %}
