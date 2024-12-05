@@ -1,9 +1,96 @@
 {% extends 'base.html' %}
 
-{% block title %}Menu{% endblock %}
+{% block title %}
+Menu - Ramen Bar
+{% endblock %}
 
 {% block content %}
-<h1>Our Menu</h1>
-<p>Explore our delicious meals.</p>
-<!-- Menu items will be displayed here -->
+
+<!-- Common Header Section -->
+<section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative">
+        <h1 class="display-4 font-weight-bold">Our Philosophy</h1>
+        <p class="lead mb-4">Where tradition meets passion, every bowl tells a story.</p>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="py-5 bg-light">
+    <div class="container">
+        <div class="section-header text-center mb-4">
+            <p>A Symphony of Flavors</p>
+            <h2>Food Menu</h2>
+        </div>
+        <div class="menu-tab">
+            <!-- Menu Category Buttons -->
+            <div class="d-flex justify-content-center mb-4">
+                <button class="btn menu-btn active mr-3" data-target="#all">All</button>
+                <button class="btn menu-btn active mr-3" data-target="#ramens">Ramen</button>
+                <button class="btn menu-btn mr-3" data-target="#starters">Starters</button>
+                <button class="btn menu-btn" data-target="#appetizers">Appetizers</button>
+            </div>
+            <!-- Menu Content -->
+            <div id="menu-content">
+                <!-- Ramen Menu -->
+                <div id="ramens" class="menu-category">
+                    {% for item in ramen_items %}
+                    <div class="menu-item d-flex align-items-center mb-4">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="menu-details flex-grow-1 ms-3">
+                            <div class="menu-title-container d-flex justify-content-between align-items-center">
+                                <h4 class="menu-title mb-0">{{ item.name }}</h4>
+                                <span class="menu-price text-muted">€{{ item.price }}</span>
+                            </div>
+                            <p class="menu-desc mt-2">{{ item.description }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No ramen items available at the moment.</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Starters Menu -->
+                <div id="starters" class="menu-category">
+                    {% for item in starters_items %}
+                    <div class="menu-item d-flex align-items-center mb-4">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="menu-details flex-grow-1 ms-3">
+                            <div class="menu-title-container d-flex justify-content-between align-items-center">
+                                <h4 class="menu-title mb-0">{{ item.name }}</h4>
+                                <span class="menu-price text-muted">€{{ item.price }}</span>
+                            </div>
+                            <p class="menu-desc mt-2">{{ item.description }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No starters available at the moment.</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Appetizers Menu -->
+                <div id="appetizers" class="menu-category">
+                    {% for item in appetizers_items %}
+                    <div class="menu-item d-flex align-items-center mb-4">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
+                             style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="menu-details flex-grow-1 ms-3">
+                            <div class="menu-title-container d-flex justify-content-between align-items-center">
+                                <h4 class="menu-title mb-0">{{ item.name }}</h4>
+                                <span class="menu-price text-muted">€{{ item.price }}</span>
+                            </div>
+                            <p class="menu-desc mt-2">{{ item.description }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No appetizers available at the moment.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
