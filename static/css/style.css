@@ -1,0 +1,702 @@
+/* === Global Reset === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* === General Body Text Settings === */
+  body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+    background-color: white;
+  }
+  
+  /* === Global Button Styles === */
+  button,
+  .btn {
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 10px 20px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+    color: #fff;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #ffc107;
+  }
+  
+  /* === Headings (Keep Berkshire Swash) === */
+  h1 {
+    font-family: "Berkshire Swash", cursive !important;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Berkshire Swash", serif;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  section {
+    scroll-margin-top: 80px;
+  }
+  
+  /* === Header === */
+  header {
+    background-color: #fff;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-nav .nav-link {
+    color: dimgray;
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: chocolate;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    outline: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 119, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  /* === Welcome Section === */
+  #welcome-centered {
+    background: url('/static/img/welcome.webp') center / cover no-repeat;
+    min-height: 98vh;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 200px;
+  }
+  
+  #welcome-centered::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  
+  #welcome-centered .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  #welcome-image {
+    background: url('/static/img/miso.webp/') center / cover no-repeat;
+    min-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+  
+  /* === Common Header === */
+  #common-header {
+    background: url('../img/header-image.webp') center / cover no-repeat;
+    height: 60vh;
+    position: relative;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px; /* Space between the header image and the content*/
+  }
+  
+  #common-header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+  }
+  #common-header .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  #common-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  #common-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* === Title Styling === */
+  #welcome-centered h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    max-width: 66.66%;
+    margin: 0 auto;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  /* === Subtitle Styling === */
+  #welcome-centered p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    line-height: 1.4;
+  }
+  
+  /* === Orange Button === */
+  .btn-orange {
+    background-color: #ff7700;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-orange:hover {
+    background-color: #e86600;
+  }
+  
+  /* === Green Button === */
+  .btn-green,
+  .cta-btn.cta-green {
+    background-color: green;
+    color: white;
+    border-color: green;
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
+  .btn-green:hover,
+  .cta-btn.cta-green:hover,
+  .btn-green.active,
+  .cta-btn.cta-green.active {
+    background-color: transparent;
+    color: green;
+    border-color: green;
+  }
+  
+  /* === Reservation Form Section === */
+  #reservationForm {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+  }
+  
+  #reservationForm .container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  #reservationForm form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #reservationForm .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  #reservationForm .col-md-4 {
+    flex: 0 0 calc(33.333% - 15px); 
+    max-width: calc(33.333% - 15px);
+  }
+  
+  form .form-control {
+    height: 45px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  #reservationForm .btn {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  
+  /*　=== Mobile === */
+  @media (max-width: 768px) {
+    #reservationForm .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+  }
+  
+  /* === Contact Form Section === */
+  #contactForm {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+  }
+  
+  #contactForm .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  #contactForm form {
+    background: white;
+    padding: 20px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #contactForm .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  #contactForm .col-md-6 {
+    flex: 0 0 48%; 
+    max-width: 48%;
+  }
+  
+  #contactForm .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  #contactForm .form-group {
+    margin-bottom: 15px;
+  }
+  
+  form .form-control,
+  form textarea {
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+  
+  form textarea {
+    height: auto; 
+    min-height: 100px; 
+    max-height: 200px; 
+    resize: vertical; 
+  }
+  
+  #contactForm .btn {
+    font-size: 18px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    margin-top: 20px; 
+    display: block; 
+    width: 100%; 
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #contactForm .btn:hover {
+    background-color: #bd2130;
+  }
+  
+  /* === Responsive Design === */
+  @media (max-width: 768px) {
+    #contactForm .col-md-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    #contactForm .btn {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+  /* === End of Contact */
+  
+  /* === Thank_you Page */
+  #thankYouSection {
+    min-height: calc(100vh - 60vh - 30px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 120px;
+  }
+  
+  #thankYouSection .lead {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* === End of Thank_you Page === */
+  
+  /* === Philosophy Content Section === */
+  #philosophyContent {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+  }
+  
+  #philosophyContent img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #philosophyContent h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  #philosophyContent p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+  }
+  
+  /* === End of Philosophy Content === */
+  
+  /* === Footer Adjustments === */
+  footer {
+    /* margin-top: auto; */
+    background-color: #343a40;
+    color: white;
+    padding: 50px 20px;
+  }
+  
+  footer h2, footer h3 {
+    font-family: "Berkshire Swash", serif;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  footer p {
+    font-size: 16px;
+    color: #bbb;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Social Icons */
+  footer .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  footer .social-icons a {
+    font-size: 28px;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  footer .social-icons a:hover {
+    color: #ff7700; 
+  }
+  
+  /* Open Hours */
+  footer .list-unstyled li {
+    color: #bbb;
+    margin-bottom: 5px;
+    text-align: center; 
+    font-size: 16px; 
+  }
+  
+  /* Newsletter Section */
+  
+  footer .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  footer .form-group input {
+    max-width: 400px;
+    height: 45px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0 10px; 
+  }
+  
+  footer .form-group button {
+    width: auto;
+    height: 45px; 
+    font-size: 16px; 
+    border-radius: 5px;
+    padding: 0 20px; 
+    background-color: #ff7700;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  footer .form-group button:hover {
+    background-color: #e86600;
+  }
+  
+  /* Equal Width Sections */
+  footer .row > div {
+    flex: 1;
+  }
+  
+  /* Additional Enhancements */
+  footer .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  footer .text-center p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  /* Center Align Text for Small Screens */
+  @media (max-width: 768px) {
+    footer .form-group {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+  
+    footer .social-icons {
+      justify-content: center;
+      margin-top: 20px;
+    }
+    footer h2, footer h3 {
+      text-align: center;
+    }
+  }
+  /* End Center Align Text for Small Screens */
+  
+  /* === Special Ramen Section === */
+  #new .row {
+    min-height: 500px;
+  }
+  
+  #new-ramen {
+    background: url('/static/img/mussels.webp') center / cover no-repeat;
+    min-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+  
+  .special-ramen-content h2,
+  .special-ramen-content h3 {
+    margin-bottom: 20px;
+  }
+  
+  .special-ramen-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* === Philosophy Section === */
+  #philosophy .row {
+    min-height: 500px;
+  }
+  
+  .philosophy-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .philosophy-content ul {
+    margin-left: 1rem;
+  }
+  
+  .philosophy-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  #noodle-chef {
+    background: url('/static/img/noodle-chef.webp/') center / cover no-repeat;
+    min-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+  
+  /* === Success Button (Learn More) === */
+  .btn-success {
+    background-color: #28a745;
+    /* Bootstrap's success green */
+    color: white;
+    border-color: #28a745;
+  }
+  
+  .btn-success:hover,
+  .btn-success.active {
+    background-color: transparent;
+    color: #28a745;
+    border-color: #28a745;
+  }
+  
+  /* === Menu Section === */
+  /* Buttons */
+  .menu-tab .menu-btn {
+    background-color: #ff7700;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .menu-tab .menu-btn.active {
+    border: 2px solid #ff7700;
+    background-color: transparent;
+    color: #ff7700;
+  }
+  
+  /* Menu Items */
+  .menu-item {
+    display: flex;
+    align-items: center;
+    width: 66.66%;
+    margin: 0 auto;
+  }
+  
+  .menu-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  
+  /* Menu Details */
+  .menu-details {
+    flex-grow: 1;
+  }
+  
+  .menu-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 5px;
+  }
+  
+  .menu-title-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px dotted #ddd;
+    z-index: 0;
+  }
+  
+  .menu-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding-right: 10px;
+  }
+  
+  .menu-price {
+    font-weight: bold;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding-left: 10px;
+  }
+  
+  .menu-desc {
+    font-size: 16px;
+    color: #555;
+    margin-top: 8px;
+    text-align: justify;
+  }

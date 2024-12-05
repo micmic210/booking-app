@@ -1,43 +1,108 @@
+{% load static %}
+
+<!-- {% url 'index' as index_url %}
+{% url 'philosophy' as philosophy_url %}
+{% url 'menu' as menu_url %}
+{% url 'reservation' as reservation_url %}
+{% url 'contact' as contact_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %} -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Page Title -->
+    <title>{% block title %}Ramen Bar{% endblock %}</title>
+
+    <!-- Meta Info -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts CSS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Experience authentic Japanese ramen at Ramen Bar. Explore our menu featuring Shoyu, Tonkotsu, and seasonal specialties crafted with fresh, locally-sourced ingredients.">
+    <meta name="keywords"
+        content="Ramen Bar, Japanese Ramen, Authentic Ramen, Shoyu Ramen, Tonkotsu Ramen, Japanese Cuisine, Noodles, Ramen Restaurant">
+    <meta name="author" content="Ramen Bar">
+    <meta name="robots" content="index, follow">
 
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>{% block title %}My App{% endblock %}</title>
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css" />
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+   integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'philosophy' %}">Philosophy</a>
-            <a href="{% url 'menu' %}">Menu</a>
-            <a href="{% url 'reservation' %}">Reservation</a>
-            <a href="{% url 'contact' %}">Contact</a>
-            <a href="{% url 'blog' %}">Blog</a>
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg bg-white fixed-top">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="#index">
+                <img src="{% static 'img/ramen-logo.png' %}" alt="Ramen Logo" width="80">
+            </a>
+            <!-- Toggle Button -->
+            <!-- <a class="navbar-brand d-block d-md-none" href="#index">
+                <span class="fw-bold text-dark">Ramen Bar</span>
+            </a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'philosophy' %}">Philosophy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reservation' %}">Reservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    </li>
 
-            <!-- Authentication Links -->
-            {% if user.is_authenticated %}
-            <a href="{% url 'account_logout' %}">Logout</a>
-            <span>Welcome, {{ user.username }}!</span>
-            {% else %}
-            <a href="{% url 'account_login' %}">Login</a>
-            <a href="{% url 'account_signup' %}">Sign Up</a>
-            {% endif %}
-        </nav>
+                    <!-- Authentication Links -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -52,20 +117,111 @@
             {% endfor %}
         </div>
         {% endif %}
+        <!-- End of Flash Messages -->
 
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer>
-        <p>© 2024 My Project</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Section -->
+                <div class="col-md-4 mb-3 text-center text-md-start">
+                    <h2 class="mb-3">Ramen Bar</h2>
+                    <p>Templergraben 55
+                        <br>52062 Aachen
+                    </p>
+                    <p>Phone: 01-2345-6789
+                        <br>Email: info@ramen-bar.com
+                    </p>
+                    <div class="social-icons d-flex text-center mt-3">
+                        <a href="https://www.facebook.com/" target="_blank" class="me-2">
+                            <i class="fa fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="https://www.twitter.com/" target="_blank" class="me-2">
+                            <i class="fa fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" class="me-2">
+                            <i class="fa fa-youtube fa-lg"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i class="fa fa-instagram fa-lg"></i>
+                        </a>
+                    </div>
+                    <p class="mt-4 text-center text-md-start">Copyright © 2024 Ramen Bar. All rights reserved.</p>
+                </div>
+                <!-- Open Hours Section -->
+                <div class="col-md-4 mb-4 text-center">
+                    <h2 class="mb-3">Open Hours</h2>
+                    <ul class="list-unstyled">
+                        <li>
+                            <span>Monday:</span>
+                            <span>12:00-15:00, 17:00-22:00</span>
+                        </li>
+                        <li>
+                            <span>Tuesday:</span>
+                            <span>12:00-15:00, 17:00-22:00</span>
+                        </li>
+                        <li>
+                            <span>Wednesday:</span>
+                            <span>12:00-15:00, 17:00-22:00</span>
+                        </li>
+                        <li>
+                            <span>Thursday:</span>
+                            <span>12:00-15:00, 17:00-22:00</span>
+                        </li>
+                        <li>
+                            <span>Friday:</span>
+                            <span>12:00-15:00, 17:00-22:00</span>
+                        </li>
+                        <li>
+                            <span>Saturday:</span>
+                            <span>12:00-15:00, 17:00-22:00</span>
+                        </li>
+                        <li>
+                            <span>Sunday:</span>
+                            <span>12:00-23:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Newsletter Section -->
+                <div class="col-md-4 mb-4 text-center">
+                    <h2 class="mb-3">Newsletter</h2>
+                    <p>Subscribe to our newsletter to be the first to hear about new menu items, seasonal specials,
+                        and exclusive discounts!</p>
+                    <form class="form-group">
+                        <input type="email" class="form-control me-2" placeholder="Enter your email" required>
+                        <button type="submit" id="subscribeButton" class="btn btn-orange mt-2">Subscribe Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+        </script>
+    <!-- JavaScript file -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- CSRF token globally for AJAX requests -->
     <script>
-        // Add CSRF token globally for AJAX requests
         const csrfToken = '{{ csrf_token }}';
     </script>
-    
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+
+{% block scripts %}
+{% endblock %}
 
 </body>
 

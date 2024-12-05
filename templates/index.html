@@ -1,8 +1,141 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+Home - Ramen Bar
+{% endblock %}
 
 {% block content %}
-<h1>Welcome to My Reservation App</h1>
-<p>Book your favorite meals and explore our menu.</p>
+
+<!-- Hero Section: Centered -->
+<section id="welcome-centered" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <!-- Content -->
+    <div class="container text-center position-relative">
+        <h1 class="display-3 font-weight-bold">Ramen Bar</h1>
+        <p class="lead mb-4">Japanese Authentic Ramen</p>
+        <div>
+            <a href="#menu" class="btn btn-success mr-2">Go to Menu</a>
+            <a href="#reservation" class="btn btn-warning">Book Table</a>
+        </div>
+    </div>
+</section>
+
+<!-- Welcome Section -->
+<section id="welcome" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Image Section -->
+            <div class="col-lg-5">
+                <div id="welcome-image" class="img-container"></div>
+            </div>
+            <!-- Welcome Message Section -->
+            <div class="col-lg-7">
+                <div class="welcome-content">
+                    <div class="section-header">
+                        <p>Welcome to Ramen Bar</p>
+                    </div>
+                    <div class="about-text">
+                        <h3>Experience the art of authentic Japanese ramen!</h3>
+                        <p>At Ramen Bar, we’re passionate about creating authentic Japanese ramen that brings joy to
+                            every bite. Our dishes are lovingly crafted using the freshest, locally procured
+                            ingredients, ensuring vibrant flavors in every spoonful.</p>
+                        <p>Under the watchful eye of our Japanese ramen master, everything—from our rich broths to
+                            our hand-pulled noodles and perfectly marinated toppings—is handmade with care,
+                            dedication, and a deep respect for tradition.</p>
+                        <p>We’d be delighted to welcome you to experience the magic in person. Whether you’re
+                            craving a comforting classic or looking to explore new seasonal specials, there’s always
+                            a seat waiting for you.</p>
+                        <p>Take a moment to reserve your table now—we can't wait to share our passion for ramen with
+                            you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Special Ramen Section -->
+<section id="new" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Description Section -->
+            <div class="col-lg-7">
+                <div class="special-ramen-content">
+                    <div class="section-header mb-4">
+                        <p>Taste the Season in Every Bowl</p>
+                        <h2 class="text-dark">Mussels Ramen</h2>
+                    </div>
+                    <p>Our Mussels Ramen is a celebration of seasonal local ingredients and meticulous
+                        craftsmanship, designed to delight and warm the hearts of our community during
+                        winter.</p>
+                    <p>This dish features a clear, delicate chicken soup seasoned with fine French salt,
+                        offering a
+                        light yet comforting base. Fresh mussels are steamed with white wine and garlic,
+                        infusing
+                        the broth with a subtle, aromatic richness. Butter-grilled scallops add a savory
+                        depth,
+                        perfectly complementing the mussels.</p>
+                    <p>To complete the dish, we garnish it with fresh rukkora leaves for a touch of
+                        bitterness and
+                        vibrant chives on the side, enhancing both flavor and presentation. The result is a
+                        bowl of
+                        ramen that is not only warming but also refreshingly light, offering a clean and
+                        balanced
+                        taste that leaves you feeling rejuvenated.</p>
+                    <p>A perfect harmony of local flavors and Japanese ramen mastery, Mussels Ramen is our
+                        winter-special offering crafted to bring warmth and joy to your table.</p>
+                </div>
+            </div>
+            <!-- Image Section  -->
+            <div id="new-ramen" class="col-lg-5">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Philosophy Section -->
+<section id="philosophy" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center" style="min-height: 500px">
+            <!-- Added min-height -->
+            <!-- Why us image -->
+            <div id="noodle-chef" class="col-lg-5 d-flex align-items-center">
+            </div>
+            <!-- Why us content -->
+            <div class="col-lg-7 d-flex align-items-center">
+                <div class="philosophy-content">
+                    <div class="section-header">
+                        <p>Craftsmanship, Quality, and Care</p>
+                    </div>
+                    <div class="section-header mb-4">
+                        <h3>Why Choose Us</h3>
+                    </div>
+                    <div class="about-text">
+                        <p>At Ramen Bar, we believe every bowl tells a story—crafted with authenticity,
+                            care, and a
+                            commitment to excellence. Our dedication to quality is rooted in three pillars:
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Handmade Perfection:</strong>From fresh noodles to savory broths,
+                                everything
+                                is prepared with precision and love.</li>
+                            <li>
+                                <strong>Mastery of a Japanese Chef:</strong>Our ramen master brings years of
+                                experience and tradition straight from Japan to your table.</li>
+                            <li>
+                                <strong>Locally Sourced Ingredients:</strong>We partner with local farmers
+                                to ensure
+                                every dish is as fresh and sustainable as it is flavorful.</li>
+                        </ul>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-success mt-3" id="learnMoreButton">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
