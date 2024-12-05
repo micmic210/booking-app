@@ -147,12 +147,11 @@ header {
 /* === Common Header === */
 #common-header {
   background: url('../img/header-image.webp') center / cover no-repeat;
-  height: 60vh;
+  height: 50vh;
   position: relative;
   color: white;
   text-align: center;
   margin-bottom: 30px;
-  /* Space between the header image and the content*/
 }
 
 #common-header .overlay {
@@ -173,6 +172,7 @@ header {
 #common-header h1 {
   font-size: 3rem;
   font-weight: bold;
+  margin-top: 100px;
 }
 
 #common-header p {
@@ -236,8 +236,8 @@ header {
 /* === Reservation Form Section === */
 #reservationForm {
   background-color: #f8f9fa;
-  padding: 10px 0;
-  margin-top: -1.0em;
+  padding: 25px 0;
+  /* margin-top: -1.0em; */
 }
 
 #reservationForm .container {
@@ -309,8 +309,9 @@ form .form-control {
 
 /* === Contact Form Section === */
 #contactForm {
+  margin-top: -1.5rem;
   background-color: #f8f9fa;
-  padding: 10px 0;
+  /* padding: 10px 0; */
 }
 
 #contactForm .container {
@@ -343,7 +344,7 @@ form .form-control {
 }
 
 #contactForm .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 form .form-control,
@@ -352,7 +353,7 @@ form textarea {
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   padding: 10px;
 }
 
@@ -369,7 +370,7 @@ form textarea {
   border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
-  margin-top: 20px;
+  margin-top: 10px;
   display: block;
   width: 100%;
   background-color: #dc3545;
@@ -403,11 +404,12 @@ form textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 120px;
+  padding-bottom: 200px;
+  margin-bottom: 60px;
 }
 
 #thankYouSection .lead {
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
   color: #333;
   line-height: 1.6;
 }
