@@ -1,20 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Confirmation</title>
-</head>
-<body>
-    <h1>Thank You!</h1>
-    <p>Your reservation has been confirmed.</p>
-    <p>Reservation Number: {{ reservation.reservation_number }}</p>
-    <p>Reservation Details:</p>
-    <ul>
-        <li>Name: {{ reservation.name }}</li>
-        <li>Date: {{ reservation.reservation_date }}</li>
-        <li>Time: {{ reservation.reservation_time }}</li>
-        <li>Guests: {{ reservation.guests }}</li>
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Reservation - Ramen Bar
+{% endblock %}
+
+{% block content %}
+
+<!-- Common Header Section -->
+<section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative">
+        <h1 class="display-4 font-weight-bold">Thank You for Your Reservation!</h1>
+        <p class="lead mb-4">Your spot is secured! Get ready to enjoy our delicious ramen and more.</p>
+    </div>
+</section>
+
+<!-- Reservation Confirmation -->
+<section id="confirmation" class="d-flex align-items-center justify-content-center bg-light py-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 border p-4 rounded" style="background-color: white;">
+                <h3 class="text-center mb-4">Reservation Number: {{ reservation.reservation_number }}</h3>
+                <div class="row mb-3">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <span class="label ml-5"><strong>Name:</strong></span>
+                        <span class="value">{{ reservation.name }}</span>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center">
+                        <span class="label"><strong>Email:</strong></span>
+                        <span class="value">{{ reservation.email }}</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <span class="label ml-5"><strong>Date:</strong></span>
+                        <span class="value">{{ reservation.reservation_date }}</span>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center">
+                        <span class="label"><strong>Time:</strong></span>
+                        <span class="value">{{ reservation.reservation_time }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <span class="label ml-5"><strong>Guests:</strong></span>
+                        <span class="value">{{ reservation.guests }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
