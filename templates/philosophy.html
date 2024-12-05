@@ -1,8 +1,59 @@
 {% extends 'base.html' %}
 
-{% block title %}Philosophy{% endblock %}
+{% block title %}
+Philosophy - Ramen Bar
+{% endblock %}
 
 {% block content %}
-<h1>Our Philosophy</h1>
-<p>We believe in creating memorable dining experiences.</p>
+
+<!-- Common Header Section -->
+<section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative">
+        <h1 class="display-4 font-weight-bold">Our Philosophy</h1>
+        <p class="lead mb-4">Where tradition meets passion, every bowl tells a story.</p>
+    </div>
+</section>
+
+<!-- Philosophy Content Section -->
+<section id="philosophyContent" class="py-5 bg-light">
+    <div class="container">
+        <!-- Handmade Perfection Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <img src="/static/img/soup-how-to.webp" alt="Fresh Noodles" class="img-fluid rounded shadow-sm mb-3">
+            </div>
+            <div class="col-md-6">
+                <p class="section-header font-weight-bold">Crafting Every Ingredient In-House</p>
+                <h2>Handmade Perfection</h2>
+                <p>At Ramen Bar, we make everything from scratch to ensure the highest quality in every bite. Our noodles are rolled and cut fresh daily, giving them the perfect texture to complement our savory broths. The chashu is slow-cooked to achieve the ultimate tenderness, while our gyoza is hand-folded with a flavorful filling. Every component is crafted with precision and love, ensuring a unique experience with each visit.</p>
+            </div>
+        </div>
+
+        <!-- Mastery of a Japanese Chef Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <img src="/static/img/noodle-chef.webp" alt="Ramen Master Chef" class="img-fluid rounded shadow-sm mb-3">
+            </div>
+            <div class="col-md-6">
+                <p class="section-header font-weight-bold">A Fusion of Local and Japanese Traditions</p>
+                <h2>Mastery of a Japanese Chef</h2>
+                <p>Our ramen master brings a world of experience to your table. With two years of honing his craft in Vietnam, five years mastering ramen in Germany, and twelve years working as a sushi chef in Japan, his expertise bridges cultures and culinary traditions. Every bowl of ramen reflects not just Japanese authenticity, but the diversity and innovation gained through a lifetime of culinary dedication.</p>
+            </div>
+        </div>
+
+        <!-- Locally Sourced Ingredients Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <img src="/static/img/local.webp" alt="Fresh Local Ingredients" class="img-fluid rounded shadow-sm mb-3">
+            </div>
+            <div class="col-md-6">
+                <p class="section-header font-weight-bold">A Fusion of Local and Japanese Traditions</p>
+                <h2>Locally Sourced Ingredients</h2>
+                <p>We believe in connecting with the local community to create a truly unique dining experience. By sourcing ingredients from local farmers, we reduce transportation costs and avoid the challenges of unstable supply chains. But it's more than that—it's about bringing Japanese ramen and local food together like a fusion of cultures. This commitment to sustainability and freshness ensures every dish is both flavorful and environmentally conscious.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
