@@ -343,4 +343,86 @@ if comment.author != request.user:
 </button>
 ```
 
+Great to hear that it worked! Below is a summary of the debugging process, including the issues you faced and how you fixed them:
 
+Debug History and Issue Fixes
+
+1. Issue: Embedded Git repository (booking-app)
+
+	•	Problem: During the process of trying to push changes to GitHub, you encountered an issue with an embedded Git repository (booking-app) that had been accidentally added inside your current repository.
+	•	Error Message:
+
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+
+
+	•	Solution:
+	•	You identified that the booking-app folder had been added to version control by mistake as an embedded Git repository.
+	•	To resolve this, you had to remove the booking-app directory from Git’s staging area using:
+
+git rm --cached -r booking-app
+
+
+	•	This removed the embedded repository from being tracked by Git.
+
+2. Issue: Merge Conflict during Rebase
+
+	•	Problem: When you tried to pull the latest changes from the remote repository with git pull --rebase, you encountered a merge conflict in settings.py.
+	•	Error Message:
+
+error: could not apply 12b939d... Fix: Remove embedded repository booking-app from version control
+
+
+	•	Solution:
+	•	The conflict was resolved by manually editing settings.py to ensure that both sets of changes were properly integrated.
+	•	After resolving the conflict, you marked the file as resolved by staging it using:
+
+git add my_project/settings.py
+
+
+	•	You continued the rebase process with:
+
+git rebase --continue
+
+
+	•	This successfully resolved the conflict and completed the rebase.
+
+3. Issue: Commit Message and Editor Confusion
+
+	•	Problem: While trying to continue the rebase, you were stuck in an editor screen (most likely Nano or another editor), where the commit message was unclear. You were unable to close the editor and complete the rebase process.
+	•	Solution:
+	•	You identified that the editor was asking you to confirm the commit message for the rebase.
+	•	After closing the editor (by pressing Ctrl+X in Nano, or following the instructions for the editor in use), the rebase was continued.
+	•	This allowed the rebase to finish and commit the changes successfully.
+
+4. Issue: File Removal and Cleanup
+
+	•	Problem: Some files (such as templates/account/login.html, templates/account/logout.html, and templates/account/signup.html) were deleted as part of the fixes to clean up the repository.
+	•	Solution:
+	•	The files were properly removed and staged for commit, and the cleanup process was confirmed with:
+
+git status
+
+
+
+5. Issue: Pushing Changes to Remote Repository
+
+	•	Problem: After completing the rebase, you couldn’t push the changes to the remote repository because of a conflict between your local and remote branches.
+	•	Solution:
+	•	You used the following command to rebase and incorporate any changes from the remote repository:
+
+git pull origin main --rebase
+
+
+	•	After resolving the conflicts and ensuring everything was updated, you successfully pushed the changes to the remote repository using:
+
+git push origin main
+
+
+
+Conclusion:
+
+You encountered several issues related to Git repository conflicts, rebase problems, and incorrect file tracking, but you successfully resolved them by carefully resolving merge conflicts, cleaning up the repository, and ensuring your commit messages and rebase processes were handled correctly.
+
+Everything seems to be working well now. You were able to get the server running, push your changes to GitHub, and the application is functioning as expected!
