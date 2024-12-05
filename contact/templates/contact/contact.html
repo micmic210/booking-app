@@ -1,16 +1,63 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}
+Contact - Ramen Bar
+{% endblock %}
 
 {% block content %}
 
-{% load crispy_forms_tags %}
 
-<h1>Contact Us</h1>
-<form action="" method="POST" class="p-4 border rounded bg-light">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Send</button>
-</form>
+<!-- Common Header Section -->
+<section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative">
+        <h1 class="display-4 font-weight-bold">Contact Us</h1>
+        <p class="lead mb-4">We’d love to hear from you! Feel free to reach out for any inquiries or feedback.</p>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contactForm" class="py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form method="post" action="" class="bg-white p-4 rounded shadow-sm">
+                    {% csrf_token %}
+                    <!-- Name and Email Row -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.name.label_tag }}
+                                {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Message Row -->
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{ form.message.label_tag }}
+                                {{ form.message }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit Button Row -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-danger w-50">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
+

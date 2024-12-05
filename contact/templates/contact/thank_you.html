@@ -1,8 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}Thank You{% endblock %}
+{% block title %}
+Thank You - Ramen Bar
+{% endblock %}
 
 {% block content %}
-<h1>Thank You!</h1>
-<p>Your submission has been received.</p>
+
+<!-- Common Header Section -->
+<section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
+    <div class="overlay"></div>
+    <div class="container text-center position-relative">
+        <h1 class="display-4 font-weight-bold">Thank You</h1>
+        <p class="lead mb-4">We appreciate your feedback and inquiries!</p>
+    </div>
+</section>
+
+<!-- Main Thank You Section -->
+<section id="thankYouSection" class="py-5 bg-light">
+    <div class="container text-center">
+        <p class="lead">Your message has been successfully sent.<br>We'll get back to you shortly.</p>
+    </div>
+</section>
+
 {% endblock %}
+
