@@ -17,7 +17,7 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-
+# from env import SENDGRID_API_KEY
 
 # Ensure env.py is loaded
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -109,8 +109,8 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(
         str(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")),  # デフォルトはSQLite
-        conn_max_age=600,  # キャッシュのための最大接続時間
-        ssl_require=True   # 必要に応じてSSL接続を要求
+        conn_max_age=600,  
+        ssl_require=True   
     )
 }
 
@@ -140,6 +140,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# #Email Configuration for SendGrid
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'apikey'
+# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY  
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
