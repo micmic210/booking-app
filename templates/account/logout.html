@@ -1,25 +1,40 @@
-{% extends "account/base_manage.html" %}
+{% extends "base.html" %}
+
+{% load i18n %}
 {% load allauth i18n %}
-{% block head_title %}
-    {% trans "Sign Out" %}
-{% endblock head_title %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    {% element p %}
-        {% trans 'Are you sure you want to sign out?' %}
-    {% endelement %}
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
-            {% csrf_token %}
-            {{ redirect_field }}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+<div class="container mt-5 logout-form-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5 shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h1 class="open-sans text-white">{% trans "Sign Out" %}</h1>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">
+                        {% trans 'Are you sure you want to sign out?' %}
+                    </p>
+                    
+                    {% url 'account_logout' as logout_url %}
+                    <form method="post" action="{{ logout_url }}">
+                        {% csrf_token %}
+                        {{ redirect_field }}
+                        <button type="submit" class="btn btn-primary btn-block mt-3">
+                            {% trans "Sign Out" %}
+                        </button>
+                    </form>
+                    
+                    <p class="text-center mt-4">
+                        <a href="{% url 'account_login' %}" class="text-primary">
+                            {% trans "Return to Sign In" %}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

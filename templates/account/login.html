@@ -5,9 +5,8 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock head_title %}
 
-
 {% block content %}
-<div class="container mt-5"> <!-- 追加: mt-5で余白を確保 -->
+<div class="container mt-5 login-form-container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mt-5 shadow-sm">
@@ -15,20 +14,13 @@
                     <h1 class="open-sans text-white">{% trans "Sign In" %}</h1>
                 </div>
                 <div class="card-body">
-                    <!-- Sign-Up Prompt -->
-                    {% setvar link %}
-                        <a href="{{ signup_url }}" class="text-primary font-weight-bold">
-                    {% endsetvar %}
-                    {% setvar end_link %}
-                        </a>
-                    {% endsetvar %}
                     <p class="text-center">
                         {% blocktranslate %}
-                            If you have not created an account yet, please {{ link }}sign up{{ end_link }} first.
+                            If you have not created an account yet, please 
+                            <a href="{{ signup_url }}" class="text-primary font-weight-bold">sign up</a> first.
                         {% endblocktranslate %}
                     </p>
                     
-                    <!-- Login Form -->
                     {% url 'account_login' as login_url %}
                     <form method="post" action="{{ login_url }}">
                         {% csrf_token %}
@@ -48,9 +40,8 @@
                         </div>
                         {% endfor %}
                         
-                        <!-- Redirect Field -->
                         {{ redirect_field }}
-
+                        
                         <button type="submit" class="btn btn-primary btn-block mt-3">
                             {% trans "Sign In" %}
                         </button>
