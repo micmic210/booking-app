@@ -28,4 +28,5 @@ urlpatterns = [
     path('menu/', include('menu.urls')), 
     path('contact/', include('contact.urls')), 
     path('blog/', include('blog.urls')), 
+    path('newsletter/', include('newsletter.urls')),
 ]

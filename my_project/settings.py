@@ -17,7 +17,6 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-# from env import SENDGRID_API_KEY
 
 # Ensure env.py is loaded
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -62,7 +61,8 @@ INSTALLED_APPS = [
     'reservation',
     'menu',
     'contact',
-    'blog'
+    'blog',
+    'newsletter',
 ]
 
 SITE_ID = 1
@@ -157,16 +157,22 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-# #Email Configuration for SendGrid
+#Email Configuration for SendGrid
+# Email Backend
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# SendGrid SMTP Server
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'apikey'
-# EMAIL_HOST_PASSWORD = SENDGRID_API_KEY  
+# EMAIL_HOST_USER = 'apikey'  
+# EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')  
+# DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')  
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
