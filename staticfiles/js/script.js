@@ -1,24 +1,24 @@
-// Smooth scroll to sections
-function scrollToSection(sectionId) {
-  const section = document.querySelector(sectionId);
-  if (section) {
-    section.scrollIntoView({
-      behavior: "smooth"
+// Smooth navigation to menu and reservation pages
+document.addEventListener("DOMContentLoaded", () => {
+  // Go to Menu button
+  const goToMenuButton = document.querySelector(".btn-danger");
+  if (goToMenuButton) {
+    goToMenuButton.addEventListener("click", (event) => {
+      event.preventDefault(); 
+      window.location.href = goToMenuButton.getAttribute("href"); 
     });
-
-    // Remove active class from all buttons
-    document.querySelectorAll(".cta-btn").forEach((btn) => btn.classList.remove("active"));
-
-    // Add active class to the corresponding button
-    if (sectionId === "#menu") {
-      document.querySelector(".cta-green").classList.add("active");
-    } else if (sectionId === "#reservation") {
-      document.querySelector(".cta-orange").classList.add("active");
-    }
-  } else {
-    console.error(`Section with ID ${sectionId} not found.`);
   }
-}
+
+  // Book Table button
+  const bookTableButton = document.querySelector(".btn-success");
+  if (bookTableButton) {
+    bookTableButton.addEventListener("click", (event) => {
+      event.preventDefault(); 
+      window.location.href = bookTableButton.getAttribute("href"); 
+    });
+  }
+});
+
 
 // Learn More Button Navigation
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (learnMoreButton) {
       learnMoreButton.addEventListener("click", () => {
           // Navigate to philosophy.html
-          window.location.href = "/philosophy/"; // Adjust this path if necessary
+          window.location.href = "/philosophy/"; 
       });
   }
 });
@@ -38,14 +38,13 @@ const menuTab = document.querySelector(".menu-tab");
 if (menuTab) {
   menuTab.addEventListener("click", (event) => {
     const button = event.target.closest(".menu-btn");
-    if (!button) return; // Clicked outside a button
+    if (!button) return; 
 
     const targetId = button.getAttribute("data-target");
     if (!targetId) return;
 
     // Remove "active" from all buttons
     menuTab.querySelectorAll(".menu-btn").forEach((btn) => btn.classList.remove("active"));
-    // Add "active" to clicked button
     button.classList.add("active");
 
     // Show/Hide categories

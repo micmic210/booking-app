@@ -32,7 +32,7 @@ Menu - Ramen Bar
 
 <!-- Like Button Section -->
 <div class="like-button-container mb-4">
-    <button id="likeButton" class="btn btn-like" data-id="{{ blog.id }}" {% if user in blog.likes.all %} disabled
+    <button id="likeButton" class="btn btn-info" data-id="{{ blog.id }}" {% if user in blog.likes.all %} disabled
         {% endif %}>
         <i class="fa {% if user in blog.likes.all %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}"></i>
         {% if user in blog.likes.all %}Liked{% else %}Like{% endif %}
@@ -40,6 +40,7 @@ Menu - Ramen Bar
     <span id="likesCount">{{ blog.likes.count }}</span>
 </div>
 
+<!-- Comment Section -->
 <section id="comments-section" class="py-5">
     <div class="container">
         <div class="row d-flex align-items-stretch">
@@ -59,13 +60,11 @@ Menu - Ramen Bar
                         {% if user == comment.author %}
                         <div class="mt-2">
                             <!-- Edit Button -->
-                            <button 
-                                class="btn btn-sm btn-primary me-2" 
+                            <button class="btn btn-sm btn-primary me-2"
                                 onclick="showEditForm('{{ comment.id }}')">Edit</button>
 
                             <!-- Delete Button -->
-                            <button 
-                                class="btn btn-sm btn-danger"
+                            <button class="btn btn-sm btn-danger"
                                 onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
                         </div>
 
@@ -75,7 +74,7 @@ Menu - Ramen Bar
                                 {% csrf_token %}
                                 <textarea name="body" class="form-control" rows="3">{{ comment.body }}</textarea>
                                 <button type="submit" class="btn btn-success btn-sm mt-2">Save</button>
-                                <button type="button" class="btn btn-secondary btn-sm mt-2" 
+                                <button type="button" class="btn btn-secondary btn-sm mt-2"
                                     onclick="hideEditForm('{{ comment.id }}')">Cancel</button>
                             </form>
                         </div>
@@ -94,8 +93,9 @@ Menu - Ramen Bar
                     {% if user.is_authenticated %}
                     <form method="post" class="mt-4">
                         {% csrf_token %}
-                        <textarea name="body" class="form-control comment-textarea" rows="6" placeholder="Write your comment here..."></textarea>
-                        <button type="submit" class="btn btn-dark btn-submit mt-3">Submit</button>
+                        <textarea name="body" class="form-control comment-textarea" rows="6"
+                            placeholder="Write your comment here..."></textarea>
+                        <button type="submit" class="btn btn-dimgray btn-submit mt-3">Submit</button>
                     </form>
                     {% else %}
                     <p>Please log in to leave a comment.</p>
@@ -105,12 +105,6 @@ Menu - Ramen Bar
         </div>
     </div>
 </section>
-
-<!-- Add Font Awesome for Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- SweetAlert2 JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     /**
