@@ -220,3 +220,8 @@ footer a:hover {
     padding: 10px;
   }
 }
+
+/* Sign-up Form */
+.form-text.text-muted {
+  display: none;
+}

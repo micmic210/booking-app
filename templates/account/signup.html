@@ -10,13 +10,13 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mt-5 shadow-sm">
-                <div class="card-header bg-success text-white text-center">
+                <div class="card-header bg-info text-white text-center">
                     <h1 class="open-sans text-white">{% trans "Sign Up" %}</h1>
                 </div>
                 <div class="card-body">
                     <!-- Login Prompt -->
                     {% setvar link %}
-                    <a href="{{ login_url }}" class="text-primary font-weight-bold">
+                    <a href="{{ login_url }}" class="text-info font-weight-bold">
                         {% endsetvar %}
                         {% setvar end_link %}
                     </a>
@@ -50,7 +50,7 @@
                         <!-- Redirect Field -->
                         {{ redirect_field }}
 
-                        <button type="submit" class="btn btn-success btn-block mt-3">
+                        <button type="submit" class="btn btn-info btn-block mt-3">
                             {% trans "Sign Up" %}
                         </button>
                     </form>
@@ -58,7 +58,7 @@
                     <!-- Passkey Option -->
                     {% if PASSKEY_SIGNUP_ENABLED %}
                     <hr>
-                    <a href="{{ signup_by_passkey_url }}" class="btn btn-outline-primary btn-block mt-3">
+                    <a href="{{ signup_by_passkey_url }}" class="btn btn-outline-info btn-block mt-3">
                         {% trans "Sign up using a passkey" %}
                     </a>
                     {% endif %}

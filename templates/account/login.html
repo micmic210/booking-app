@@ -10,17 +10,17 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mt-5 shadow-sm">
-                <div class="card-header bg-primary text-white text-center">
+                <div class="card-header bg-info text-white text-center">
                     <h1 class="open-sans text-white">{% trans "Sign In" %}</h1>
                 </div>
                 <div class="card-body">
                     <p class="text-center">
                         {% blocktranslate %}
-                            If you have not created an account yet, please 
-                            <a href="{{ signup_url }}" class="text-primary font-weight-bold">sign up</a> first.
+                        If you have not created an account yet, please
+                        <a href="{{ signup_url }}" class="text-info font-weight-bold">sign up</a> first.
                         {% endblocktranslate %}
                     </p>
-                    
+
                     {% url 'account_login' as login_url %}
                     <form method="post" action="{{ login_url }}">
                         {% csrf_token %}
@@ -32,20 +32,26 @@
                             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                             {{ field }}
                             {% if field.help_text %}
-                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
                             {% endif %}
                             {% for error in field.errors %}
-                                <div class="text-danger">{{ error }}</div>
+                            <div class="text-danger">{{ error }}</div>
                             {% endfor %}
                         </div>
                         {% endfor %}
-                        
+
                         {{ redirect_field }}
-                        
-                        <button type="submit" class="btn btn-primary btn-block mt-3">
+
+                        <button type="submit" class="btn btn-info btn-block mt-3">
                             {% trans "Sign In" %}
                         </button>
                     </form>
+                    <!-- Forgot password link -->
+                    <p class="text-center mt-3">
+                        <a href="{% url 'account_reset_password' %}" class="text-info">
+                            {% trans "Forgot your password?" %}
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
