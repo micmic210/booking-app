@@ -35,9 +35,9 @@ class Reservation(models.Model):
         ('pending', 'Pending'),
     ]
 
-    name = models.CharField(max_length=100, null=False, default="Jon Doe", blank=False)
+    name = models.CharField(max_length=100, null=False, blank=False)
     email = models.EmailField(blank=True, null=True)
-    phone = models.CharField(max_length=20, null=False, default="0000-0000-0000", blank=False)
+    phone = models.CharField(max_length=20, null=False, blank=False)
     table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="reservations", default=Table.get_default_table)
     reservation_date = models.DateField(null=False)
     reservation_time = models.TimeField(null=False)

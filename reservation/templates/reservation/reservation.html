@@ -17,36 +17,48 @@ Reservation - Ramen Bar
     </div>
 </section>
 
-<!-- Reservation Form Section -->
 <section id="reservationForm" class="d-flex align-items-center justify-content-center bg-light">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
-                <form method="post" action="">
+                <form id="reservation-form" name="reservation-form" method="post" action="">
                     {% csrf_token %}
+
+                    <!-- Error Messages -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {% for field, errors in form.errors.items %}
+                                    <li><strong>{{ field }}:</strong> {{ errors|join:", " }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 form-group">
                             {{ form.name.label_tag }}
                             {{ form.name }}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 form-group">
                             {{ form.email.label_tag }}
                             {{ form.email }}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 form-group">
                             {{ form.phone.label_tag }}
                             {{ form.phone }}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 form-group">
                             {{ form.reservation_date.label_tag }}
-                            {{ form.reservation_date }}
+                            <input type="date" id="reservation_date" name="reservation_date" class="form-control"
+                                   min="{{ today_date }}" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 form-group">
                             <label for="reservation_time">Reservation Time:</label>
                             <input type="time" id="reservation_time" name="reservation_time" class="form-control"
-                                step="900" min="12:00" max="21:00" required>
+                                   step="900" min="12:00" max="21:00" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 form-group">
                             {{ form.guests.label_tag }}
                             {{ form.guests }}
                         </div>
@@ -57,4 +69,6 @@ Reservation - Ramen Bar
         </div>
     </div>
 </section>
+
+
 {% endblock %}
