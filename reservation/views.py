@@ -1,27 +1,27 @@
+from datetime import date
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .forms import ReservationForm
 from .models import Reservation
-from datetime import date
 
 
 def index(request):
     """
     Renders the index page.
     """
-    return render(request, 'index.html')
+    return render(request, "index.html")
 
 
 def reservation(request):
     """
     Handles reservation form submission and rendering.
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
             reservation = form.save()
             return redirect(
-                'confirmation',
+                "confirmation",
                 reservation_number=reservation.reservation_number,
             )
     else:
@@ -32,8 +32,8 @@ def reservation(request):
 
     return render(
         request,
-        'reservation/reservation.html',
-        {'form': form, 'today_date': today_date},
+        "reservation/reservation.html",
+        {"form": form, "today_date": today_date},
     )
 
 
@@ -41,14 +41,14 @@ def philosophy_view(request):
     """
     Renders the philosophy page.
     """
-    return render(request, 'philosophy.html')
+    return render(request, "philosophy.html")
 
 
 def thank_you_view(request):
     """
     Renders the thank-you page for contact form submission.
     """
-    return render(request, 'contact/thank_you.html')
+    return render(request, "contact/thank_you.html")
 
 
 def confirmation(request, reservation_number):
@@ -61,54 +61,38 @@ def confirmation(request, reservation_number):
     )
     return render(
         request,
-        'reservation/confirmation.html',
-        {'reservation': reservation},
+        "reservation/confirmation.html",
+        {"reservation": reservation},
     )
 
 
 def cancel_reservation(request):
     """
-    Handles reservation cancellation logic.
+    Simplified reservation cancellation logic.
     """
     if request.method == "POST":
         reservation_number = request.POST.get("reservation_number")
-        name = request.POST.get("name", "").strip()
 
         try:
-            # Try to find the reservation
+            # Find the reservation by number
             reservation = Reservation.objects.get(
                 reservation_number=reservation_number,
-                name=name,
             )
 
-            if request.POST.get("confirm_cancel") == "true":
-                reservation.delete()
-                messages.success(
-                    request,
-                    "Your reservation has been successfully canceled.",
-                )
-                return redirect("cancel_reservation")
-
-            # If not confirmed, display for confirmation
-            return render(
+            # Delete the reservation
+            reservation.delete()
+            messages.success(
                 request,
-                "reservation/cancellation.html",
-                {
-                    "reservation": reservation,
-                    "show_cancel_button": True,
-                },
+                "Your reservation has been successfully canceled.",
             )
-
         except Reservation.DoesNotExist:
-            # Reservation not found
+            # If reservation not found, display a warning message
             messages.warning(
                 request,
-                "Reservation not found. Please check your reservation number "
-                "and name.",
+                "Reservation number not found. Please check and try again.",
             )
 
-    return render(
-        request,
-        "reservation/cancellation.html",
-        {"show_cancel_button": False},
-    )
+        # Redirect to the cancellation page
+        return redirect("cancel_reservation")
+
+    return render(request, "reservation/cancellation.html")
