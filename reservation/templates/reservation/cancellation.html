@@ -16,30 +16,24 @@ Cancel Reservation - Ramen Bar
 </section>
 
 <!-- Cancellation Form Section -->
-<section id="cancelReservation" class="d-flex align-items-center justify-content-center bg-light" style="padding: 30px 0;">
-    <div class="container" style="max-width: 50%; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
-        <h3 class="text-center mb-4" style="font-size: 1.5rem; color: #333;">Please enter your reservation number to cancel your reservation.</h3>
-
-        <!-- Flash Messages -->
-        {% if messages %}
-        <div class="flash-messages mb-4">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+<section id="cancelReservation" class="d-flex align-items-center justify-content-center bg-light"
+    style="padding: 30px 0;">
+    <div class="container"
+        style="max-width: 50%; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+        <h3 class="text-center mb-4" style="font-size: 1.5rem; color: #333;">Please enter your reservation number to
+            cancel your reservation.</h3>
 
         <!-- Form -->
         <form method="post" action="{% url 'cancel_reservation' %}">
             {% csrf_token %}
             <div class="form-group mb-3">
                 <label for="reservation_number" class="form-label">Reservation Number:</label>
-                <input type="text" name="reservation_number" id="reservation_number" class="form-control" placeholder="Enter your reservation number" required>
+                <input type="text" name="reservation_number" id="reservation_number" class="form-control"
+                    placeholder="Enter your reservation number" required>
             </div>
-            <button type="submit" class="btn btn-info w-100" style="background-color: #17a2b8; color: #fff; padding: 10px 15px; font-size: 1rem;">Cancel Reservation</button>
+            <button type="submit" class="btn btn-info w-100"
+                style="background-color: #17a2b8; color: #fff; padding: 10px 15px; font-size: 1rem;">Cancel
+                Reservation</button>
         </form>
     </div>
 </section>
