@@ -1,67 +1,88 @@
-// Smooth scroll to sections
-function scrollToSection(sectionId) {
-  const section = document.querySelector(sectionId);
-  if (section) {
-    section.scrollIntoView({
-      behavior: "smooth"
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  const likeButton = document.getElementById('likeButton');
 
-    // Remove active class from all buttons
-    document.querySelectorAll(".cta-btn").forEach((btn) => btn.classList.remove("active"));
+  if (likeButton) {
+      likeButton.addEventListener('click', function () {
+          const blogId = likeButton.getAttribute('data-id');
 
-    // Add active class to the corresponding button
-    if (sectionId === "#menu") {
-      document.querySelector(".cta-green").classList.add("active");
-    } else if (sectionId === "#reservation") {
-      document.querySelector(".cta-orange").classList.add("active");
-    }
-  } else {
-    console.error(`Section with ID ${sectionId} not found.`);
-  }
-}
+          // Send an AJAX request to the server
+          fetch(`/blog/like/${blogId}/`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': getCSRFToken(),
+              },
+              body: JSON.stringify({})
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.liked !== undefined) {
+                  // Update the like count and button text
+                  const likesCount = document.getElementById('likesCount');
+                  likesCount.textContent = data.likes_count;
 
-// Learn More Button Navigation
-document.addEventListener("DOMContentLoaded", () => {
-  const learnMoreButton = document.getElementById("learnMoreButton");
-
-  if (learnMoreButton) {
-      learnMoreButton.addEventListener("click", () => {
-          // Navigate to philosophy.html
-          window.location.href = "/philosophy/"; // Adjust this path if necessary
+                  likeButton.disabled = true;
+                  likeButton.innerHTML = `<i class="fa fa-thumbs-up"></i> ${data.liked ? 'Liked' : 'Like'}`;
+              } else if (data.error) {
+                  alert(data.error);
+              }
+          })
+          .catch(error => console.error('Error:', error));
       });
   }
 });
 
-// Menu Section: Category Filtering
-const menuTab = document.querySelector(".menu-tab");
-
-if (menuTab) {
-  menuTab.addEventListener("click", (event) => {
-    const button = event.target.closest(".menu-btn");
-    if (!button) return; // Clicked outside a button
-
-    const targetId = button.getAttribute("data-target");
-    if (!targetId) return;
-
-    // Remove "active" from all buttons
-    menuTab.querySelectorAll(".menu-btn").forEach((btn) => btn.classList.remove("active"));
-    // Add "active" to clicked button
-    button.classList.add("active");
-
-    // Show/Hide categories
-    const menuCategories = document.querySelectorAll(".menu-category");
-    if (targetId === "#all") {
-      menuCategories.forEach((category) => category.classList.remove("d-none"));
-    } else {
-      menuCategories.forEach((category) => category.classList.add("d-none"));
-      const targetCategory = document.querySelector(targetId);
-      if (targetCategory) targetCategory.classList.remove("d-none");
-    }
-  });
+function getCSRFToken() {
+  const cookies = document.cookie.split(';');
+  for (let cookie of cookies) {
+      const [key, value] = cookie.trim().split('=');
+      if (key === 'csrftoken') {
+          return decodeURIComponent(value);
+      }
+  }
+  return '';
 }
 
-// Set default state
-const defaultButton = menuTab?.querySelector(".menu-btn[data-target='#all']");
-if (defaultButton) defaultButton.classList.add("active");
-const menuCategories = document.querySelectorAll(".menu-category");
-menuCategories.forEach((category) => category.classList.remove("d-none"));
+/**
+* Show the edit form for a specific comment.
+*/
+function showEditForm(commentId) {
+  const editForm = document.getElementById(`edit-form-${commentId}`);
+  if (editForm) {
+      editForm.classList.remove('d-none'); // Show the form
+  } else {
+      console.error(`Edit form with ID edit-form-${commentId} not found.`);
+  }
+}
+
+/**
+* Hide the edit form for a specific comment.
+*/
+function hideEditForm(commentId) {
+  const editForm = document.getElementById(`edit-form-${commentId}`);
+  if (editForm) {
+      editForm.classList.add('d-none'); // Hide the form
+  } else {
+      console.error(`Edit form with ID edit-form-${commentId} not found.`);
+  }
+}
+
+/**
+* Confirm delete action using SweetAlert2.
+*/
+function confirmDelete(blogId, commentId) {
+  Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you really want to delete this comment?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+      if (result.isConfirmed) {
+          const deleteUrl = `/blog/${blogId}/comment/${commentId}/delete/`;
+          window.location.href = deleteUrl;
+      }
+  });
+}
