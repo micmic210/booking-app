@@ -21,38 +21,39 @@ Contact - Ramen Bar
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <form method="post" action="" class="bg-white p-4 rounded shadow-sm">
-                    {% csrf_token %}
-                    <!-- Name and Email Row -->
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form.name.label_tag }}
-                                {{ form.name }}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form.email.label_tag }}
-                                {{ form.email }}
-                            </div>
+                <form name="reg" method="post" action="" onsubmit="return validateForm()"
+                    class="bg-white p-4 rounded shadow-sm">
+                {% csrf_token %}
+                <!-- Name and Email Row -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
                         </div>
                     </div>
-                    <!-- Message Row -->
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {{ form.message.label_tag }}
-                                {{ form.message }}
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
                         </div>
                     </div>
-                    <!-- Submit Button Row -->
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-danger w-100">Send Message</button>
+                </div>
+                <!-- Message Row -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ form.message.label_tag }}
+                            {{ form.message }}
                         </div>
                     </div>
+                </div>
+                <!-- Submit Button Row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-danger w-100">Send Message</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>
@@ -60,4 +61,3 @@ Contact - Ramen Bar
 </section>
 
 {% endblock %}
-
