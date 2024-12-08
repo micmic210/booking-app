@@ -57,7 +57,7 @@
     <!-- Header -->
     <header class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#index">
+            <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'img/ramen-logo.png' %}" alt="Ramen Logo" width="80">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -106,7 +106,7 @@
         <div class="container">
             <div class="row">
                 <!-- Contact Section -->
-                <div class="col-md-4 mb-3 text-center text-md-start">
+                <div class="col-md-6 mb-3 text-center text-md-start">
                     <h2 class="mb-3">Ramen Bar</h2>
                     <p>Templergraben 55
                         <br>52062 Aachen
@@ -131,7 +131,7 @@
                     <p class="mt-4 text-center text-md-start">Copyright © 2024 Ramen Bar. All rights reserved.</p>
                 </div>
                 <!-- Open Hours Section -->
-                <div class="col-md-4 mb-4 text-center">
+                <div class="col-md-6 mb-4 text-center">
                     <h2 class="mb-3">Open Hours</h2>
                     <ul class="list-unstyled">
                         <li>
@@ -163,16 +163,6 @@
                             <span>12:00-23:00</span>
                         </li>
                     </ul>
-                </div>
-                <!-- Newsletter Section -->
-                <div class="col-md-4 mb-4 text-center">
-                    <h2 class="mb-3">Newsletter</h2>
-                    <p>Subscribe to our newsletter to be the first to hear about new menu items, seasonal specials,
-                        and exclusive discounts!</p>
-                    <form class="form-group">
-                        <input type="email" class="form-control me-2" placeholder="Enter your email" required>
-                        <button type="submit" id="subscribeButton" class="btn btn-orange mt-2">Subscribe Now</button>
-                    </form>
                 </div>
             </div>
         </div>
