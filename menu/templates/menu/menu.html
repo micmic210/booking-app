@@ -24,7 +24,7 @@ Menu - Ramen Bar
         </div>
         <div class="menu-tab">
             <!-- Menu Category Buttons -->
-            <div class="d-flex justify-content-center mb-4">
+            <div class="d-flex justify-content-center mb-4" style="flex-wrap: wrap; gap: 20px">
                 <button class="btn menu-btn active mr-3" data-target="#all">All</button>
                 <button class="btn menu-btn active mr-3" data-target="#ramens">Ramen</button>
                 <button class="btn menu-btn mr-3" data-target="#starters">Starters</button>
@@ -35,7 +35,7 @@ Menu - Ramen Bar
                 <!-- Ramen Menu -->
                 <div id="ramens" class="menu-category">
                     {% for item in ramen_items %}
-                    <div class="menu-item d-flex align-items-center mb-4">
+                    <div class="menu-item d-flex align-items-center justify-content-center flex-column flex-sm-row mb-4">
                         <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
                              style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="menu-details flex-grow-1 ms-3">
@@ -54,7 +54,7 @@ Menu - Ramen Bar
                 <!-- Starters Menu -->
                 <div id="starters" class="menu-category">
                     {% for item in starters_items %}
-                    <div class="menu-item d-flex align-items-center mb-4">
+                    <div class="menu-item d-flex align-items-center justify-content-center flex-column flex-sm-row mb-4">
                         <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
                              style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="menu-details flex-grow-1 ms-3">
@@ -73,7 +73,7 @@ Menu - Ramen Bar
                 <!-- Appetizers Menu -->
                 <div id="appetizers" class="menu-category">
                     {% for item in appetizers_items %}
-                    <div class="menu-item d-flex align-items-center mb-4">
+                    <div class="menu-item d-flex align-items-center justify-content-center flex-column flex-sm-row mb-4">
                         <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
                              style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="menu-details flex-grow-1 ms-3">

@@ -183,6 +183,125 @@ header .navbar-nav .nav-link:hover {
   position: relative;
   z-index: 2;
 }
+/* === Menu Page === */
+
+/* General Menu Button Styles */
+.menu-btn {
+  background-color: #f57c00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; 
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-btn:hover {
+  background-color: #e46600;
+}
+
+/* Menu Buttons Container */
+.menu-tab {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; 
+}
+
+.menu-tab .menu-btn {
+  flex: 1 1 calc(50% - 10px); 
+  max-width: 100%; 
+  box-sizing: border-box; 
+}
+
+/* Responsive Button Adjustments */
+@media (max-width: 768px) {
+  .menu-tab {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+  }
+
+  .menu-tab .menu-btn {
+    flex: none; 
+    width: 100%; 
+  }
+}
+
+/* Menu Item Styles */
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px; 
+  padding: 10px;
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  background-color: #fff; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Menu Item Image */
+.menu-item img {
+  flex-shrink: 0; 
+  margin-right: 15px; 
+  border-radius: 5px; 
+  width: 100px;
+  height: 100px;
+  object-fit: cover; 
+}
+
+/* Responsive Menu Item Adjustments */
+@media (max-width: 576px) {
+  .menu-item {
+    flex-direction: column; 
+    text-align: center; 
+    padding: 15px; 
+  }
+
+  .menu-item img {
+    margin-right: 0; 
+    margin-bottom: 10px; 
+    width: 80px;
+    height: 80px; 
+  }
+
+  .menu-details {
+    text-align: center; 
+  }
+
+  .menu-title-container {
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 10px;
+  }
+}
+
+/* Title and Price Container */
+.menu-title-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.menu-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.menu-price {
+  font-size: 1rem;
+  color: #999; 
+}
+
+/* End of Menu Section */
+
+/* Adjust container spacing */
+.container {
+  padding: 0 15px;
+}
 
 /* === Contact Form Section === */
 #contactForm {
