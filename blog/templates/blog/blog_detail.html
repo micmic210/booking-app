@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Menu - Ramen Bar
+    Menu - Ramen Bar
 {% endblock %}
 
 {% block content %}
@@ -17,13 +17,12 @@ Menu - Ramen Bar
 
 <!-- Featured Image -->
 {% if blog.featured_image %}
-<div class="text-center mb-4">
-    <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="img-fluid featured-image">
-</div>
+    <div class="text-center mb-4">
+        <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="img-fluid featured-image">
+    </div>
 {% else %}
-<p class="text-center">No image available for this post.</p>
+    <p class="text-center">No image available for this post.</p>
 {% endif %}
-
 
 <!-- Blog Content -->
 <div class="blog-content my-5">
@@ -32,11 +31,14 @@ Menu - Ramen Bar
 
 <!-- Like Button Section -->
 <div class="like-button-container mb-4">
-    <button id="likeButton" class="btn btn-info" data-id="{{ blog.id }}" {% if user in blog.likes.all %} disabled
-        {% endif %}>
+    <!-- Like button is disabled if the user has already liked the blog -->
+    <button id="likeButton" class="btn btn-info" data-id="{{ blog.id }}" 
+        {% if user in blog.likes.all %} disabled {% endif %}>
+        <!-- Icon and text change based on whether the user has liked the blog -->
         <i class="fa {% if user in blog.likes.all %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}"></i>
         {% if user in blog.likes.all %}Liked{% else %}Like{% endif %}
     </button>
+    <!-- Like count displayed here -->
     <span id="likesCount">{{ blog.likes.count }}</span>
 </div>
 
@@ -49,39 +51,39 @@ Menu - Ramen Bar
                 <div class="comments-header">
                     <h3>Comments ({{ comment_count }})</h3>
                     {% for comment in comments %}
-                    <div class="comment mb-4 p-3 bg-light rounded shadow-sm">
-                        <p>
-                            <strong>{{ comment.author }}</strong>
-                            <small class="text-muted">on {{ comment.created_on }}</small>
-                        </p>
-                        <p>{{ comment.body }}</p>
+                        <div class="comment mb-4 p-3 bg-light rounded shadow-sm">
+                            <p>
+                                <strong>{{ comment.author }}</strong>
+                                <small class="text-muted">on {{ comment.created_on }}</small>
+                            </p>
+                            <p>{{ comment.body }}</p>
 
-                        <!-- Edit and Delete Buttons (Visible only for the comment author) -->
-                        {% if user == comment.author %}
-                        <div class="mt-2">
-                            <!-- Edit Button -->
-                            <button class="btn btn-sm btn-primary me-2"
-                                onclick="showEditForm('{{ comment.id }}')">Edit</button>
+                            <!-- Edit and Delete Buttons (Visible only for the comment author) -->
+                            {% if user == comment.author %}
+                                <div class="mt-2">
+                                    <!-- Edit Button -->
+                                    <button class="btn btn-sm btn-primary me-2"
+                                        onclick="showEditForm('{{ comment.id }}')">Edit</button>
 
-                            <!-- Delete Button -->
-                            <button class="btn btn-sm btn-danger"
-                                onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
+                                    <!-- Delete Button -->
+                                    <button class="btn btn-sm btn-danger"
+                                        onclick="confirmDelete('{{ blog.id }}', '{{ comment.id }}')">Delete</button>
+                                </div>
+
+                                <!-- Hidden Edit Form -->
+                                <div id="edit-form-{{ comment.id }}" class="mt-3 d-none">
+                                    <form method="post" action="{% url 'comment_edit' blog.id comment.id %}">
+                                        {% csrf_token %}
+                                        <textarea name="body" class="form-control" rows="3">{{ comment.body }}</textarea>
+                                        <button type="submit" class="btn btn-success btn-sm mt-2">Save</button>
+                                        <button type="button" class="btn btn-secondary btn-sm mt-2"
+                                            onclick="hideEditForm('{{ comment.id }}')">Cancel</button>
+                                    </form>
+                                </div>
+                            {% endif %}
                         </div>
-
-                        <!-- Hidden Edit Form -->
-                        <div id="edit-form-{{ comment.id }}" class="mt-3 d-none">
-                            <form method="post" action="{% url 'comment_edit' blog.id comment.id %}">
-                                {% csrf_token %}
-                                <textarea name="body" class="form-control" rows="3">{{ comment.body }}</textarea>
-                                <button type="submit" class="btn btn-success btn-sm mt-2">Save</button>
-                                <button type="button" class="btn btn-secondary btn-sm mt-2"
-                                    onclick="hideEditForm('{{ comment.id }}')">Cancel</button>
-                            </form>
-                        </div>
-                        {% endif %}
-                    </div>
                     {% empty %}
-                    <p class="text-muted">No comments yet. Be the first to comment!</p>
+                        <p class="text-muted">No comments yet. Be the first to comment!</p>
                     {% endfor %}
                 </div>
             </div>
@@ -91,14 +93,14 @@ Menu - Ramen Bar
                 <div class="leave-comment-header">
                     <h3>Leave a comment:</h3>
                     {% if user.is_authenticated %}
-                    <form method="post" class="mt-4">
-                        {% csrf_token %}
-                        <textarea name="body" class="form-control comment-textarea" rows="6"
-                            placeholder="Write your comment here..."></textarea>
-                        <button type="submit" class="btn btn-dimgray btn-submit mt-3">Submit</button>
-                    </form>
+                        <form method="post" class="mt-4">
+                            {% csrf_token %}
+                            <textarea name="body" class="form-control comment-textarea" rows="6"
+                                placeholder="Write your comment here..."></textarea>
+                            <button type="submit" class="btn btn-dimgray btn-submit mt-3">Submit</button>
+                        </form>
                     {% else %}
-                    <p>Please log in to leave a comment.</p>
+                        <p>Please log in to leave a comment.</p>
                     {% endif %}
                 </div>
             </div>
@@ -107,6 +109,51 @@ Menu - Ramen Bar
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const likeButton = document.getElementById('likeButton');
+
+        if (likeButton) {
+            likeButton.addEventListener('click', function () {
+                const blogId = likeButton.getAttribute('data-id');
+
+                // Send an AJAX request to the server
+                fetch(`/blog/like/${blogId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken(),
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.liked !== undefined) {
+                        // Update the like count and button text
+                        const likesCount = document.getElementById('likesCount');
+                        likesCount.textContent = data.likes_count;
+
+                        likeButton.disabled = true;
+                        likeButton.innerHTML = `<i class="fa fa-thumbs-up"></i> ${data.liked ? 'Liked' : 'Like'}`;
+                    } else if (data.error) {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+    });
+
+    function getCSRFToken() {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [key, value] = cookie.trim().split('=');
+            if (key === 'csrftoken') {
+                return decodeURIComponent(value);
+            }
+        }
+        return '';
+    }
+
     /**
      * Show the edit form for a specific comment.
      */
@@ -151,6 +198,5 @@ Menu - Ramen Bar
         });
     }
 </script>
-
 
 {% endblock %}
