@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .forms import ReservationForm
 from .models import Reservation
-from django.contrib import messages
+from datetime import date
 
 
 def index(request):
@@ -21,15 +22,18 @@ def reservation(request):
             reservation = form.save()
             return redirect(
                 'confirmation',
-                reservation_number=reservation.reservation_number
+                reservation_number=reservation.reservation_number,
             )
     else:
         form = ReservationForm()
 
+    # Pass today's date as ISO-8601 formatted string (YYYY-MM-DD)
+    today_date = date.today().isoformat()
+
     return render(
         request,
         'reservation/reservation.html',
-        {'form': form}
+        {'form': form, 'today_date': today_date},
     )
 
 
@@ -53,12 +57,12 @@ def confirmation(request, reservation_number):
     """
     reservation = get_object_or_404(
         Reservation,
-        reservation_number=reservation_number
+        reservation_number=reservation_number,
     )
     return render(
         request,
         'reservation/confirmation.html',
-        {'reservation': reservation}
+        {'reservation': reservation},
     )
 
 
@@ -74,14 +78,14 @@ def cancel_reservation(request):
             # Try to find the reservation
             reservation = Reservation.objects.get(
                 reservation_number=reservation_number,
-                name=name
+                name=name,
             )
 
             if request.POST.get("confirm_cancel") == "true":
                 reservation.delete()
                 messages.success(
                     request,
-                    "Your reservation has been successfully canceled."
+                    "Your reservation has been successfully canceled.",
                 )
                 return redirect("cancel_reservation")
 
@@ -91,8 +95,8 @@ def cancel_reservation(request):
                 "reservation/cancellation.html",
                 {
                     "reservation": reservation,
-                    "show_cancel_button": True
-                }
+                    "show_cancel_button": True,
+                },
             )
 
         except Reservation.DoesNotExist:
@@ -100,11 +104,11 @@ def cancel_reservation(request):
             messages.warning(
                 request,
                 "Reservation not found. Please check your reservation number "
-                "and name."
+                "and name.",
             )
 
     return render(
         request,
         "reservation/cancellation.html",
-        {"show_cancel_button": False}
+        {"show_cancel_button": False},
     )

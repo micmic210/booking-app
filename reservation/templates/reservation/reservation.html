@@ -21,7 +21,7 @@ Reservation - Ramen Bar
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
-                <form id="reservation-form" name="reservation-form" method="post" action="">
+                <form id="reservation-form" name="reservation-form" method="post" action="{% url 'reservation' %}">
                     {% csrf_token %}
 
                     <!-- Error Messages -->
