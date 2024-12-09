@@ -1,44 +1,47 @@
 # Ramen Bar
-![Ramen Bar](/documentation/home-page.webp)
+![Ramen Bar](/documentation/index.webp)
 
 Welcome to Ramen Bar – your ultimate destination for all things ramen! Whether you’re a ramen aficionado or just discovering the joy of this comforting dish, we’re here to share the flavors, culture, and magic of a perfect bowl of ramen.
 
 Join us as we explore mouthwatering recipes, offer expert tips, and connect with fellow ramen enthusiasts who share a passion for this delicious and soulful cuisine. Dive into the rich world of ramen with us and discover your new favorite bowl!
 
-Here's the website: [Ramen Bar](https://micmic210.github.io/curry-lovers/index.html) 
+Here's the website: [Ramen Bar](https://ramen-bar-booking-app-8cf486e28254.herokuapp.com/) 
 
 ## Contents 
-* [User Experience](#user-experience)
-  * [User Stories](#user-stories)
-* [Design](#design)
-  * [Color Scheme](#color-scheme)
-  * [Typography](#typography)
-  * [Logo](#logo)
-  * [Imagery](#imagery)
-  * [Wireframes](#wireframes)
-  * [Features](#features)
-      * [The Home Page](#the-home-page)
-      * [The History Page](#the-history-page)
-      * [The Recipes Page](#the-recipes-page)
-      * [The Membership Page](#the-membership-page)
-      * [The Thank-you Page](#the-thank-you-page)
-      * [The 404 Page](#the-404-page)
-* [Technologies Used](#technologies-used)
-  * [Languages Used](#languages-used)
-  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
-* [Deployment & Local Deployment](#deployment--local-development)
-  * [Deployment](#deployment)
-  * [Local Development](#local-development)
-    * [How to Fork](#how-to-fork)
-    * [How to Clone](#how-to-clone)
-* [Testing](#testing)
-  * [Solved Bugs](#solved-bugs)
-* [Credits](#credits)
-  * [Code Used](#code-used)
-  * [Content](#content)
-  * [Media](#media)
-  * [Acknowledgments](#acknowledgments)
 
+### Updated Directory with Hyperlinks and Numbering
+
+Here’s an updated version of your directory with correct numbering and hyperlinks that match your content for easy navigation:
+
+---
+
+## Contents
+
+1. [User Experience](#user-experience)
+   - [User Stories](#user-stories)
+2. [Design](#design)
+   - [Color Scheme](#color-scheme)
+   - [Brand Logo and Favicon](#brand-logo-and-favicon)
+   - [Typography](#typography)
+   - [Imagery](#imagery)
+   - [Wireframes](#wireframes)
+   - [Features](#features)
+3. [Future Implementations](#future-implementations)
+4. [Technologies Used](#technologies-used)
+   - [Languages Used](#languages-used)
+   - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+5. [Deployment & Local Development](#deployment--local-development)
+   - [Repository Deployment via Heroku](#repository-deployment-via-heroku)
+6. [Testing](#testing)
+   - [Solved Bugs](#solved-bugs)
+7. [Credits](#credits)
+   - [Code Used](#code-used)
+   - [Content](#content)
+   - [Media](#media)
+   - [Acknowledgments](#acknowledgments)
+8. [Debug History](#debug-history)
+
+---
 - - - 
 
 ## User Experience
@@ -147,49 +150,51 @@ The Ramen Bar website features high-quality images of steaming bowls of ramen, f
 Here are the wireframes I have prepared to illustrate the user interface design across different devices—mobile, tablet, and desktop—ensuring a consistent and optimized user experience for each screen size.
 
 `The Home Page`
-![index](/documentation/curry-lovers-home.webp)
+![index](/documentation/index.png)
 
-`The Phylosophy Page`
-![phylosophy](/documentation/curry-lovers-history.webp)
+`The Philosophy Page`
+![phylosophy](/documentation/philosophy.png)
 
 `The Menu Page`
-![menu](/documentation/curry-lovers-recipes.webp)
+![menu](/documentation/menu.png)
 
 `The Reservation Page`
-![reservation](/documentation/curry-lovers-membership.webp)
+![reservation](/documentation/reservation.png)
 
 `The Contact Page`
-![contact](/documentation/curry-lovers-thank-you.webp)
+![contact](/documentation/contact.png)
 
 `The Blog Page`
-![blog](/documentation/curry-lovers-404.webp)
+![blog](/documentation/blog.png)
 
 ### Features 
 
 The Ramen Bar website includes a variety of key pages, each designed to provide a seamless and engaging user experience:
 
-![index](/documentation/home-page.webp)
+![index](/documentation/index.webp)
 * Home Page: Welcomes visitors with vibrant imagery, an overview of the new menu, our three pillars of mission, and quick access to essential features such as reservations and blogs.
 
-![index](/documentation/home-page.webp)
+![menu](/documentation/menu.webp)
 * Menu Page: Displays a categorized list of ramen dishes, starters, and more, complete with descriptions, prices, and photos, allowing users to explore the offerings in detail.
 
-![index](/documentation/home-page.webp)
+![reservation](/documentation/reservation.webp)
 * Reservation Page: Enables users to easily book a table with a simple form, complete with a confirmation message upon successful submission.
 
-![index](/documentation/home-page.webp)
+![blog](/documentation/blog.webp)
 * Blog Page: Features articles on ramen culture, recipes, and the history of ramen, along with options for logged-in users to comment, edit, delete, and like posts.
 
-![index](/documentation/home-page.webp)
+![contact](/documentation/contact.webp)
 * Contact Page: Provides a user-friendly contact form for inquiries, ensuring direct communication with the restaurant.
 
-![index](/documentation/home-page.webp)
+![cancellation](/documentation/cancellation.png)
 * Reservation Cancellation Page: Allows users to cancel their reservations using a reservation number, ensuring flexibility and convenience.
 
-![index](/documentation/home-page.webp)
+![sign-in](/documentation/sign-in.webp)
+![logout](/documentation/)
+![sign-up](/documentation/sign-up.png)
 * Authentication Pages: Includes login, signup, and account management options, offering secure access to personalized features.
 
-![index](/documentation/home-page.webp)
+![thank_you](/documentation/thank_you)
 * Thank-You Page: Displays a confirmation message after successful actions like form reservations.
 
 ## Future Implementations 
@@ -273,17 +278,32 @@ To deploy the project live, Heroku was used. Here are the steps:
 
 - - - 
 
-## Testing 
-Please refer to [TESTING.md](/TESTING.md) for detailed test results and insights from the testing process.
+### Updated Testing Section Summary
+
+Here's a concise and polished version of your testing section for the README:
+
+---
+
+## Testing
+
+Comprehensive testing was carried out to ensure the **Ramen Bar** website delivers a reliable and seamless user experience. Both automated and manual testing methods were employed:  
+
+- **Automated Testing**: The HTML and CSS were validated using W3C Validator tools, while JavaScript was tested with JSHint to ensure compatibility and functionality. Lighthouse was used to analyze performance, accessibility, and best practices.  
+- **Manual Testing**: All key features were rigorously tested, including reservations, cancellations, contact forms, authentication, and blog functionalities. The site was also tested across multiple devices and browsers to confirm responsiveness and usability.  
+
+For a detailed breakdown of tests performed and results, please refer to [TESTING.md](/TESTING.md).  
 
 ### Solved Bugs
-1. Favicon not appearing on the deployed website
-Description: After deploying the website, the favicon was not displaying in the browser tab.
-Fix: Uploaded a favicon.ico and added versioning to the favicon link to ensure browsers load the updated icon
 
-2. ES6 Syntax Compatibility
-Issue: The warnings about const being available only in ES6 indicate that the script might not be compatible with environments that don’t support ES6.
-Fix: Replaced the const keyword with var to ensure compatibility with all JavaScript environments, including those that do not support ES6.
+1. **Favicon Not Appearing on Deployed Website**  
+   - **Issue**: The favicon was not displaying in the browser tab after deployment.  
+   - **Fix**: Uploaded a `favicon.ico` file and added versioning to the favicon link to ensure browsers load the updated icon.
+
+2. **ES6 Syntax Compatibility**  
+   - **Issue**: The use of `const` triggered compatibility warnings in environments that don’t support ES6.  
+   - **Fix**: Replaced the `const` keyword with `var` to ensure compatibility across all JavaScript environments.
+
+--- 
 
 - - - 
 
@@ -307,376 +327,4 @@ I would like to extend my heartfelt gratitude to Mr. Jubril Akolade, my mentor f
 I would also like to thank the tutors at Code Institute for their patience, assistance, and invaluable advice throughout the learning and development process. Their dedication and support have been essential to my growth as a developer.
 
 A special thanks to my husband and my daughter for their unwavering support, constructive feedback, and encouragement during this journey. Their advice and suggestions greatly contributed to the success of this project.
-
- 
-
-Debug Section
-
-### **Debug Log**
-
-#### **1. Cloudinary Configuration Error**
-- **Issue**: A typo in the `CLOUDINARY_URL` environment variable caused the following error during startup:
-  ```
-  ValueError: Invalid CLOUDINARY_URL scheme. Expecting to start with 'cloudinary://'
-  ```
-- **Solution**:
-  1. Corrected the `CLOUDINARY_URL` in the `env.py` file.
-     - Correct format: `cloudinary://API_KEY:API_SECRET@CLOUD_NAME`
-  2. Restarted the server to verify the fix.
-
----
-
-#### **2. Static Files Configuration Error**
-- **Issue**: The `STATICFILES` directory was not found, resulting in the following error when running `collectstatic`:
-  ```
-  django.core.exceptions.ImproperlyConfigured: You're using the staticfiles app without having set the STATIC_ROOT setting to a filesystem path.
-  ```
-- **Solution**:
-  1. Added the following settings in `settings.py`:
-     ```python
-     STATIC_URL = 'static/'
-     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-     ```
-  2. Created the necessary directories:
-     ```bash
-     mkdir static staticfiles
-     ```
-  3. Ran `python manage.py collectstatic` to resolve the issue.
-
----
-
-#### **3. CSRF Verification Error**
-- **Issue**: After deploying to Heroku, the following error occurred:
-  ```
-  Forbidden (403) CSRF verification failed. Request aborted.
-  ```
-- **Solution**:
-  1. Added `CSRF_TRUSTED_ORIGINS` to `settings.py`:
-     ```python
-     CSRF_TRUSTED_ORIGINS = [
-         "https://<your-app-name>.herokuapp.com",
-         "https://*.codeanyapp.com",
-     ]
-     ```
-  2. Set the environment variable on Heroku:
-     ```bash
-     heroku config:set CSRF_TRUSTED_ORIGINS=https://<your-app-name>.herokuapp.com
-     ```
-  3. Restarted the server to confirm the fix.
-
----
-
-#### **4. allauth Middleware Error**
-- **Issue**: The `allauth.account.middleware.AccountMiddleware` was not added to `MIDDLEWARE`, leading to the following error:
-  ```
-  django.core.exceptions.ImproperlyConfigured: allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE
-  ```
-- **Solution**:
-  1. Added the middleware to `settings.py`:
-     ```python
-     'allauth.account.middleware.AccountMiddleware',
-     ```
-  2. Applied migrations using:
-     ```bash
-     python manage.py migrate
-     ```
-
----
-
-#### **5. Reservation Form Not Displayed**
-- **Issue**: The `reservation.html` template did not display the form. Debugging revealed that the form was not correctly passed from the `reservation` view.
-- **Solution**:
-  1. Fixed the `reservation` view in `reservation/views.py`:
-     ```python
-     def reservation(request):
-         if request.method == 'POST':
-             form = ReservationForm(request.POST)
-             if form.is_valid():
-                 reservation = form.save()
-                 return redirect('confirmation', reservation_number=reservation.reservation_number)
-         else:
-             form = ReservationForm()
-         return render(request, 'reservation/reservation.html', {'form': form})
-     ```
-  2. Ensured the form code was properly added to the template.
-
----
-
-#### **6. Cloudinary Configuration for Menu Management**
-- **Issue**: Menu images were not being uploaded due to missing Cloudinary configuration.
-- **Solution**:
-  1. Updated the `menu/models.py` to include the Cloudinary field:
-     ```python
-     from cloudinary.models import CloudinaryField
-
-     class Menu(models.Model):
-         name = models.CharField(max_length=100)
-         description = models.TextField(blank=True, null=True)
-         price = models.DecimalField(max_digits=6, decimal_places=2)
-         category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='ramen')
-         image = CloudinaryField('image', folder="menu_images/")
-         is_available = models.BooleanField(default=True)
-         created_at = models.DateTimeField(auto_now_add=True)
-
-         def __str__(self):
-             return self.name
-     ```
-  2. Ran migrations:
-     ```bash
-     python manage.py makemigrations
-     python manage.py migrate
-     ```
-
----
-
-### **Key Learnings and Reflections**
-1. **Accuracy with Environment Variables**: Typos in `env.py` led to errors. Always verify environment variables before deployment.
-2. **Static Files Management**: Reinforced understanding of Django's static files handling.
-3. **Prioritizing Error Resolution**: Addressing errors sequentially simplified debugging.
-4. **Code Reusability**: Leveraging prior project code significantly improved efficiency.
-
-Based on the screenshot, I understand you are referring to a Markdown style that includes **code blocks** for commands and descriptions, often displayed in "boxes." Below is the updated debugging history formatted in a style consistent with your screenshot:
-
----
-
-## Debugging History for Blog Features
-
-### 1. **Comment Editing and Deletion Issues**
-
-#### Problem
-- The modal for confirming comment edits appeared at the wrong timing.
-- Editing functionality sometimes did not save changes correctly.
-- Inline editing forms occasionally displayed rendering errors.
-
-#### Solution
-```bash
-# Fixed the timing of the modal appearance
-- Adjusted the `confirmSaveChanges` JavaScript function to ensure the modal appears after clicking the "Submit" button in the edit form.
-- Correctly mapped the `comment_form` instance to the respective comment in the template (`blog_detail.html`).
-- Updated inline form rendering logic with unique ID management to avoid conflicts.
-```
-
----
-
-### 2. **Incorrect Button States**
-
-#### Problem
-- Both "Edit" and "Delete" buttons displayed inconsistently styled buttons.
-- Buttons sometimes appeared for unauthorized users or in duplicate.
-
-#### Solution
-```bash
-# Updated button logic and styling
-- Rewrote the conditional rendering logic in `blog_detail.html` to restrict button display to comment authors only.
-- Standardized button styles using Bootstrap 4 classes.
-```
-
----
-
-### 3. **LIKE Button Implementation**
-
-#### Problem
-- The LIKE functionality allowed unliking, which was against the specification.
-- Button styles and text were inconsistent with the desired design.
-- AJAX requests failed occasionally due to missing CSRF tokens.
-
-#### Solution
-```bash
-# Added CSRF token dynamically and restricted unliking
-- Restricted "unlike" by disabling the LIKE button after it is clicked.
-- Added `Font Awesome` thumbs-up icons for the LIKE button.
-- Enhanced `views.py` to handle already liked posts and provide proper JSON responses.
-- Integrated CSRF tokens dynamically into AJAX headers.
-```
-
----
-
-### 4. **Rendering Errors in JavaScript and HTML**
-
-#### Problem
-- JavaScript syntax errors caused runtime failures in confirmation modals.
-- Variables in `confirmSaveChanges` and `confirmDelete` functions were not properly scoped or referenced.
-
-#### Solution
-```bash
-# Fixed JavaScript syntax errors
-- Corrected syntax and used template literals for dynamic ID references.
-- Added error handling and console logging for debugging missing elements.
-```
-
----
-
-### 5. **Comments Misaligned with Post Content**
-
-#### Problem
-- Comment submission boxes were not aligned properly with the layout.
-- Headers for "Edit Comment" and "Leave a Comment" were inconsistent.
-
-#### Solution
-```bash
-# Updated layout and styling for comments
-- Adjusted the `blog_detail.html` layout using the Bootstrap 4 grid system to align comments to the right sidebar.
-- Standardized headers to user-friendly text like "Leave a Comment" and "Edit Your Comment."
-```
-
----
-
-### 6. **Miscellaneous Fixes**
-
-```bash
-- Removed redundant code for comment approval since it was not required for the current setup.
-- Added tooltips and improved button descriptions for accessibility.
-- Improved error messages in `views.py` to be more user-friendly.
-```
-
----
-
-### **Code Highlights**
-
-#### Improved `views.py`
-```python
-# Enhanced error handling for comment_edit and comment_delete
-if comment.author != request.user:
-    messages.error(request, "You are not authorized to edit this comment.")
-    return redirect('blog_detail', id=blog.id)
-```
-
-#### Enhanced `blog_detail.html`
-```html
-<!-- LIKE Button -->
-<button id="likeButton" 
-        class="btn btn-primary" 
-        data-id="{{ blog.id }}" 
-        {% if user in blog.likes.all %} disabled {% endif %}>
-    <i class="fa {% if user in blog.likes.all %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}"></i>
-    {% if user in blog.likes.all %}Liked{% else %}Like{% endif %}
-</button>
-```
-
-Great to hear that it worked! Below is a summary of the debugging process, including the issues you faced and how you fixed them:
-
-Debug History and Issue Fixes
-
-1. Issue: Embedded Git repository (booking-app)
-
-	•	Problem: During the process of trying to push changes to GitHub, you encountered an issue with an embedded Git repository (booking-app) that had been accidentally added inside your current repository.
-	•	Error Message:
-
-hint: You've added another git repository inside your current repository.
-hint: Clones of the outer repository will not contain the contents of
-hint: the embedded repository and will not know how to obtain it.
-
-
-	•	Solution:
-	•	You identified that the booking-app folder had been added to version control by mistake as an embedded Git repository.
-	•	To resolve this, you had to remove the booking-app directory from Git’s staging area using:
-
-git rm --cached -r booking-app
-
-
-	•	This removed the embedded repository from being tracked by Git.
-
-2. Issue: Merge Conflict during Rebase
-
-	•	Problem: When you tried to pull the latest changes from the remote repository with git pull --rebase, you encountered a merge conflict in settings.py.
-	•	Error Message:
-
-error: could not apply 12b939d... Fix: Remove embedded repository booking-app from version control
-
-
-	•	Solution:
-	•	The conflict was resolved by manually editing settings.py to ensure that both sets of changes were properly integrated.
-	•	After resolving the conflict, you marked the file as resolved by staging it using:
-
-git add my_project/settings.py
-
-
-	•	You continued the rebase process with:
-
-git rebase --continue
-
-
-	•	This successfully resolved the conflict and completed the rebase.
-
-3. Issue: Commit Message and Editor Confusion
-
-	•	Problem: While trying to continue the rebase, you were stuck in an editor screen (most likely Nano or another editor), where the commit message was unclear. You were unable to close the editor and complete the rebase process.
-	•	Solution:
-	•	You identified that the editor was asking you to confirm the commit message for the rebase.
-	•	After closing the editor (by pressing Ctrl+X in Nano, or following the instructions for the editor in use), the rebase was continued.
-	•	This allowed the rebase to finish and commit the changes successfully.
-
-4. Issue: File Removal and Cleanup
-
-	•	Problem: Some files (such as templates/account/login.html, templates/account/logout.html, and templates/account/signup.html) were deleted as part of the fixes to clean up the repository.
-	•	Solution:
-	•	The files were properly removed and staged for commit, and the cleanup process was confirmed with:
-
-git status
-
-
-
-5. Issue: Pushing Changes to Remote Repository
-
-	•	Problem: After completing the rebase, you couldn’t push the changes to the remote repository because of a conflict between your local and remote branches.
-	•	Solution:
-	•	You used the following command to rebase and incorporate any changes from the remote repository:
-
-git pull origin main --rebase
-
-
-	•	After resolving the conflicts and ensuring everything was updated, you successfully pushed the changes to the remote repository using:
-
-git push origin main
-
-
-
-Here’s the debug history and fixes summary for today. Let me know if you need further details about any specific item.
-
----
-
-### **1. Newsletter Subscription Feature**
-#### **Summary**
-- **Issue**: HTML and CSS were complete, but the JavaScript for handling form submission was not implemented.
-- **Fixes**:
-  - Added a basic JavaScript implementation to handle form submission.
-  - Included email validation and success message functionality.
-  - Proposed a backend integration using SendGrid for real email subscription management.
-- **Changes Made**:
-  - Provided a JavaScript snippet for frontend-only email submission simulation.
-  - Shared a Node.js backend example for using SendGrid API.
-
-#### **Outcome**
-- A simple frontend-only solution can be implemented quickly.
-- The SendGrid integration, which requires more time, was postponed.
-
----
-
-### **2. Time and Complexity Estimation**
-#### **Summary**
-- **Issue**: Lack of clarity on the time and effort required for implementing the feature.
-- **Fixes**:
-  - Estimated time for frontend-only implementation: ~1 hour.
-  - Estimated time for SendGrid backend integration: 1–3 hours.
-  - Classified the difficulty as "Easy" for frontend tasks and "Moderate" for backend integration.
-
-#### **Outcome**
-- Established a clear understanding of implementation timeframes.
-- Decision made to deprioritize the feature due to time constraints.
-
----
-
-### **3. Prioritization and Optimization**
-#### **Summary**
-- **Issue**: Need to decide what features to prioritize given limited time.
-- **Fixes**:
-  - Advised postponing the newsletter subscription feature to focus on higher-priority tasks.
-  - Provided a clear roadmap for implementing the feature in the future when time permits.
-
-#### **Outcome**
-- Decision to delay the implementation of the newsletter feature, allowing focus on more urgent tasks.
-- Prepared a simplified approach for future integration to save time later.
-
-
 
