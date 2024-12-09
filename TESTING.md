@@ -49,11 +49,7 @@ CSS File:
 ### JavaScript Validator 
 ![jshint](https://jshint.com/) was used to validate the JavaScript.
 * Metrics: 
-There is only one function in this file.
-It takes one argument.
-This function contains 7 statements.
-Cyclomatic complexity number for this function is 4.
-Passed validation with no errors or warnings.
+
 ![javascript.js](/documentation/jshint-result.webp)
 
 - - - 
