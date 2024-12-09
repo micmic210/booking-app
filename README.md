@@ -45,6 +45,10 @@ Here's the website: [Ramen Bar](https://micmic210.github.io/curry-lovers/index.h
 Ramen Bar is crafted to provide an engaging and seamless user experience, making every visit to the site a delightful journey into the world of ramen. The intuitive and visually appealing layout ensures effortless navigation, allowing users to make and manage reservations, cancel bookings, or get in touch with ease. Dive into blogs that celebrate ramen culture, its ties to Japan, and culinary inspiration, all presented with captivating visuals and a clean design. For logged-in users, the experience is elevated with interactive features like the ability to write, edit, and delete comments, as well as express appreciation through LIKE buttons. Ramen Bar combines functionality and aesthetics to create a community-centric platform that’s as warm and inviting as a bowl of ramen.
 
 ### User Stories
+
+The Ramen Bar website focuses on providing a user-friendly and engaging experience. Visitors can browse a categorized menu, make and cancel reservations, and contact the restaurant through an intuitive interface. A blog section allows users to explore articles on ramen culture and engage through comments and likes. Registered users benefit from additional features such as comment management and personalization. Admins can efficiently manage menu items, reservations, and blog content via the Django admin panel. These features ensure a seamless and enjoyable experience for both users and administrators.
+
+
 #### 1. User-Friendly Frontend Design
 As a user, I want the website to have a visually appealing and intuitive design so that I can easily navigate and interact with it.
 
@@ -289,13 +293,7 @@ Fix: Replaced the const keyword with var to ensure compatibility with all JavaSc
 The Ramen Bar website incorporates code from Code Institute’s Blog project, particularly for the structure and Bootstrap styling of the blog section. These elements were adapted and customized to align with the design and functionality needs of the site, ensuring a seamless and engaging user experience.
 
 ### Content
-This project includes content adapted or referenced from the following sources:
 
-- Wikipedia - Portions of the historical overview and development of Japanese curry are based on content from Wikipedia. Japanese Curry - Wikipedia
-
-- Tasting Table - Insights on the regional varieties and flavor profiles of Japanese curry were drawn from Tasting Table. The History of Japanese Curry Rice - Tasting Table
-
-- Japan Insider Secrets - Detailed information on the history, varieties, and cooking methods of Japanese curry was adapted from this source.　Japanese Curry: A Complete Guide - Japan Insider Secrets
 
 ### Media 
 This project includes images borrowed from the following sources:
