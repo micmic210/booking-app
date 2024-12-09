@@ -78,10 +78,7 @@ section {
 
 /* === Header === */
 header {
-  /* background-color: #fff;
-  z-index: 999;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  position: fixed; /* 固定ヘッダー */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -150,6 +147,195 @@ header {
   color: white;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  #welcome-image {
+    min-height: 200px;
+    /* Reduce the height of the image */
+    margin: 0 auto;
+    /* Center the image */
+  }
+
+  .welcome-content {
+    text-align: center;
+    /* Center text content */
+  }
+}
+
+/* Adjust Hero Section for Small Screens */
+@media (max-width: 768px) {
+  #welcome-centered {
+    min-height: 70vh;
+    /* Reduce height for smaller screens */
+    padding-top: 100px;
+    /* Adjust padding */
+    background-size: contain;
+    /* Ensure the image doesn't overflow */
+  }
+
+  #welcome-centered h1 {
+    font-size: 2rem;
+    /* Smaller font size for the heading */
+  }
+
+  #welcome-centered p {
+    font-size: 1rem;
+    /* Smaller font size for subtext */
+  }
+
+  #welcome-centered .btn {
+    padding: 8px 16px;
+    /* Adjust button padding */
+    font-size: 0.9rem;
+    /* Adjust button text size */
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+  }
+}
+
+/* Tablet Viewport Adjustments */
+@media (max-width: 768px) {
+  #welcome-centered {
+    min-height: 65vh;
+    /* Reduce height for tablets */
+    padding-top: 80px;
+    /* Adjust padding */
+    background-size: cover;
+  }
+
+  #welcome-centered h1 {
+    font-size: 2rem;
+    /* Medium-sized heading */
+  }
+
+  #welcome-centered p {
+    font-size: 1rem;
+    /* Adjust subtext size */
+  }
+}
+
+/* Adjustments for Medium-Sized Screens (321px to 767px) */
+@media (min-width: 321px) and (max-width: 767px) {
+  #welcome-centered {
+    min-height: 60vh; /* Adjust section height for medium screens */
+    padding-top: 50px; /* Adjust padding */
+    background-size: cover; /* Keep background proportional */
+  }
+
+  /* Adjust heading */
+  #hero-title {
+    font-size: 1.5rem; /* Medium font size */
+    line-height: 1.2; /* Balanced spacing */
+    margin: 0 auto; /* Center align */
+    text-align: center;
+  }
+
+  /* Adjust subtitle */
+  #hero-subtitle {
+    font-size: 0.9rem; /* Medium subtitle size */
+    margin: 0 auto 0.5rem; /* Add space below subtitle */
+    text-align: center;
+  }
+
+  /* Compact buttons */
+  #menu-btn,
+  #reservation-btn {
+    font-size: 0.75rem; /* Keep button text readable */
+    padding: 5px 8px; /* Compact padding */
+    margin: 5px auto; /* Center and add spacing between buttons */
+    width: 40%; /* Buttons take 40% of the screen width */
+    max-width: 120px; /* Limit button width to a maximum of 120px */
+    display: block; /* Stack buttons vertically */
+    text-align: center; /* Center the button text */
+    border-radius: 6px; /* Add slight rounding for aesthetics */
+  }
+
+  /* Adjust container width */
+  #welcome-centered .container {
+    width: 90%; /* Maintain proportional width */
+    padding: 0 10px; /* Add minimal padding */
+  }
+}
+
+
+@media (max-width: 480px) {
+  #welcome-centered .container {
+    width: 90%;
+    /* Shrink container for small screens */
+    padding: 0 10px;
+    /* Add padding for breathing room */
+  }
+}
+
+
+/* Specific Adjustments for Very Small Devices (320x480) */
+@media (max-width: 480px) {
+  #welcome-centered {
+    min-height: 40vh;
+    /* Further reduce height */
+    padding-top: 5px;
+    /* Reduce top padding */
+    background-size: cover;
+  }
+
+  /* Smaller heading */
+  #hero-title {
+    font-size: 0.8rem;
+    /* Significantly reduce font size */
+    line-height: 1;
+    /* Tighten line spacing */
+    margin: 0 auto;
+    /* Center the heading */
+    text-align: center;
+  }
+
+  /* Smaller subtitle */
+  #hero-subtitle {
+    font-size: 0.5rem;
+    /* Reduce font size */
+    margin: 0 auto 0.1rem;
+    /* Center and reduce spacing */
+    text-align: center;
+  }
+
+  /* Style the buttons */
+  #menu-btn,
+  #reservation-btn {
+    font-size: 0.6rem;
+    /* Reduce button font size */
+    padding: 2px 6px;
+    /* Compact button padding */
+    margin: 4px auto;
+    /* Add small spacing and center the buttons */
+    width: 70%;
+    /* Make buttons narrower */
+    max-width: 150px;
+    /* Set a smaller max width */
+    display: block;
+    /* Ensure buttons stack vertically */
+    text-align: center;
+    /* Center the button text */
+  }
+
+  /* Container adjustments */
+  #welcome-centered .container {
+    width: 95%;
+    /* Adjust container width */
+    padding: 0 5px;
+    /* Add minimal horizontal padding */
+  }
+}
+
+
+
+
+
 
 /* === Common Header === */
 #common-header {
@@ -302,12 +488,13 @@ form .form-control {
 
 /* Adjust label-value spacing */
 .d-flex.align-items-center {
-  gap: 10px; /* Adjust spacing between label and value */
+  gap: 10px;
+  /* Adjust spacing between label and value */
 }
 
 .label {
   min-width: 80px;
-} 
+}
 
 .value {
   flex-grow: 1;
@@ -751,9 +938,9 @@ footer .text-center p {
 }
 
 .pagination {
-  display: flex; 
-  justify-content: center; 
-  margin-top: 20px; 
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .pagination .page-link {
@@ -776,98 +963,99 @@ footer .text-center p {
 /* Blog Detail page */
 
 .featured-image {
-  max-width: 100%; 
-  height: auto; 
-  max-height: 400px; 
-  object-fit: cover; 
-  display: block; 
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
   margin: 0 auto;
-  border-radius: 10px; 
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Blog Content Section */
 .blog-content {
   max-width: 800px;
-  margin: 0 auto; 
-  padding: 20px; 
-  font-size: 1.1rem; 
-  line-height: 1.8; 
-  letter-spacing: 0.02em; 
-  color: #333; 
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: #333;
 }
 
 /* Like Button Section */
 .like-button-container {
-  max-width: 800px; 
-  margin: 20px auto; 
-  text-align: left; 
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: left;
 }
 
 .btn-like {
-  background-color: #e86600; 
+  background-color: #e86600;
   border: none;
   color: white;
-  padding: 10px 20px; 
-  font-size: 1rem; 
-  border-radius: 5px; 
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .btn-like:hover {
-  background-color: #d45a00; 
+  background-color: #d45a00;
 }
 
 /* Comments Section */
 #comments-section {
-  background-color: #f9f9f9; 
+  background-color: #f9f9f9;
   padding: 30px 0;
 }
 
 .comment {
-  background: #fff; 
-  border: 1px solid #ddd; 
-  border-radius: 5px; 
-  padding: 15px; 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
-  margin-bottom: 15px; 
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
 }
 
 .comment .btn-primary {
-  background-color: #007bff; 
+  background-color: #007bff;
   border: none;
 }
 
 .comment .btn-danger {
-  background-color: #dc3545; 
+  background-color: #dc3545;
   border: none;
 }
 
 /* Comment Form */
 #comments-section .btn-submit {
-  background-color: #444; 
-  color: white; 
+  background-color: #444;
+  color: white;
   border: none;
-  padding: 10px 20px; 
-  border-radius: 5px; 
-  font-size: 1rem; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 #comments-section .btn-submit:hover {
-  background-color: #333; 
+  background-color: #333;
 }
+
 .comment-textarea {
-  width: 100%; 
+  width: 100%;
   font-size: 1rem;
   padding: 10px;
-  border-radius: 5px; 
-  border: 1px solid #ddd; 
-  resize: none; 
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  resize: none;
 }
 
 .comment-textarea:focus {
-  border-color: #333; 
-  outline: none; 
+  border-color: #333;
+  outline: none;
 }
 
 .btn-submit {
@@ -889,6 +1077,5 @@ footer .text-center p {
 .login-form-container,
 .logout-form-container,
 .signup-form-container {
-    margin-bottom: 100px; 
+  margin-bottom: 100px;
 }
-
