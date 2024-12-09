@@ -1,9 +1,9 @@
 # Ramen Bar - Testing
-![Ramen Bar](/documentation/home-page.webp)
+![Ramen Bar](/documentation/index.webp)
 
 Welcome to the testing documentation for the Ramen Bar website. As a student developer, I have dedicated my efforts to creating a high-quality, user-friendly platform for ramen enthusiasts to explore and make reservations. Built using HTML, CSS, Bootstrap, JavaScript, Python, and Django, this project integrates modern web development tools to deliver a seamless experience. This document provides an overview of the testing strategies and methodologies I employed to ensure the functionality, performance, and responsiveness of the site. From verifying design consistency across devices to ensuring smooth reservation workflows and debugging complex interactions, this guide outlines the steps taken to make the Ramen Bar website an enjoyable and reliable platform for every visitor.
 
-Visit the site here: [RAMEN BARS](https://micmic210.github.io/curry-lovers/index.html)
+Visit the site here: [RAMEN BARS](https://ramen-bar-booking-app-8cf486e28254.herokuapp.com/)
 
 - - - 
 
@@ -26,7 +26,7 @@ Visit the site here: [RAMEN BARS](https://micmic210.github.io/curry-lovers/index
 All HTML and CSS files for the Ramen Bar website were tested using the W3C Validator tools, and no errors were found. Below is a list of the validated files:
 
 HTML Files: 
-![html](/documentation/html.webp)
+![html](/documentation/w3c.webp)
 * index.html: Passed validation with no errors.
 * phylosophy.html: Passed validation with no errors.
 * menu.html: Passed validation with no errors.
@@ -43,7 +43,7 @@ HTML Files:
 * 404.html: Passed validation with no errors.
 
 CSS File:
-![css](/documentation/cl-css.webp)
+![css](/documentation/css.webp)
 * style.css: Passed validation with no errors.
 
 ### JavaScript Validator 
@@ -63,11 +63,11 @@ Passed validation with no errors or warnings.
 Below are the Lighthouse test results for the Ramen Lovers website, showcasing key performance metrics and areas of optimization.
 
 ### Mobile Results
-![index.html](/documentation/index-mobile.webp)
+![index.html](/documentation/mobile.webp)
 
 
 ### Desktop Results
-![index.html](/documentation/index-desktop.webp)
+![index.html](/documentation/desktop.webp)
 
 - - - 
 
