@@ -1,11 +1,11 @@
-# Curry Lovers
-![Curry Lovers](/documentation/home-page.webp)
+# Ramen Bar
+![Ramen Bar](/documentation/home-page.webp)
 
-Welcome to Curry Lovers – your go-to community for all things Japanese Curry! Whether you’re a seasoned chef or simply a fan of this comforting dish, we’re here to celebrate the unique flavors and heartwarming experience of Japanese curry.
+Welcome to Ramen Bar – your ultimate destination for all things ramen! Whether you’re a ramen aficionado or just discovering the joy of this comforting dish, we’re here to share the flavors, culture, and magic of a perfect bowl of ramen.
 
-Join us as we explore recipes, share tips, and connect with fellow enthusiasts who share a love for this delicious and satisfying cuisine. Dive into the world of Japanese curry with us!
+Join us as we explore mouthwatering recipes, offer expert tips, and connect with fellow ramen enthusiasts who share a passion for this delicious and soulful cuisine. Dive into the rich world of ramen with us and discover your new favorite bowl!
 
-Here's the website: [CURRY LOVERS](https://micmic210.github.io/curry-lovers/index.html) 
+Here's the website: [Ramen Bar](https://micmic210.github.io/curry-lovers/index.html) 
 
 ## Contents 
 * [User Experience](#user-experience)
@@ -13,6 +13,7 @@ Here's the website: [CURRY LOVERS](https://micmic210.github.io/curry-lovers/inde
 * [Design](#design)
   * [Color Scheme](#color-scheme)
   * [Typography](#typography)
+  * [Logo](#logo)
   * [Imagery](#imagery)
   * [Wireframes](#wireframes)
   * [Features](#features)
@@ -41,158 +42,230 @@ Here's the website: [CURRY LOVERS](https://micmic210.github.io/curry-lovers/inde
 - - - 
 
 ## User Experience
-Curry Lovers is designed with the user in mind, offering an intuitive and enjoyable experience for anyone who visits the site. The layout is simple and clean, making it easy for users to navigate through the various sections, from learning about the history of Japanese curry to discovering new recipes. The website provides a visually appealing interface with a consistent color scheme, readable typography, and engaging imagery that enhances the overall experience.
+Ramen Bar is crafted to provide an engaging and seamless user experience, making every visit to the site a delightful journey into the world of ramen. The intuitive and visually appealing layout ensures effortless navigation, allowing users to make and manage reservations, cancel bookings, or get in touch with ease. Dive into blogs that celebrate ramen culture, its ties to Japan, and culinary inspiration, all presented with captivating visuals and a clean design. For logged-in users, the experience is elevated with interactive features like the ability to write, edit, and delete comments, as well as express appreciation through LIKE buttons. Ramen Bar combines functionality and aesthetics to create a community-centric platform that’s as warm and inviting as a bowl of ramen.
 
 ### User Stories
-The Curry Lovers website was developed to meet the needs of a diverse range of users:
+#### 1. User-Friendly Frontend Design
+As a user, I want the website to have a visually appealing and intuitive design so that I can easily navigate and interact with it.
 
-* As a new visitor, I want to easily find information about Japanese curry, so I can learn more about this dish.
-* As a home cook, I want to access a variety of Japanese curry recipes, so I can try making them at home.
-* As a history enthusiast, I want to explore the origins and cultural significance of Japanese curry, so I can appreciate it more deeply.
-* As a member, I want to join a community of curry lovers, so I can share my experiences and learn from others.
+* Each page has a consistent design theme.
+* Clear and intuitive navigation menus are provided.
+* Reservation and contact forms are visually appealing and easy to use.
+
+#### 2. Menu Display
+As a customer, I want to view the menu online, so that I can see the available dishes and their details.
+
+* Menu items are displayed by categories (e.g., Ramen, Starters).
+* Each menu item includes a name, description, price, and photo.
+* An "All Menu" button allows customers to view all items across categories.
+
+#### 3. Reservation Functionality
+As a customer, I want to reserve a table online, so that I can secure a spot in the restaurant without waiting.
+
+* Customers can fill out a reservation form with fields for name, email, phone number, date, time, and number of guests.
+* Upon successful form submission, a confirmation message is displayed.
+* Reservations are recorded in the database and accessible via the admin panel.
+
+#### 4. Reservation Cancellation
+As a user, I want to cancel my reservation using my reservation number online so that I can modify my plans without contacting support.
+
+* The website has a "Cancel Reservation" option, accessible from the homepage.
+* Users must enter their reservation number for cancellation.
+The system validates the entered reservation number against existing records.
+* If the reservation number is valid, the user sees the cancel button.
+Upon successful cancellation, the system displays a confirmation message.
+* If the reservation number is invalid, an error message informs the user.
+
+#### 5. Blog Feature
+As a user, I want to read blog posts, leave comments, and like posts so that I can engage more deeply with the site.
+
+* Users can view the latest blog posts on a blog list page.
+* Users can read detailed blog posts on a blog detail page.
+* Logged-in users can leave comments and like posts.
+* Blog posts and comments can be managed through the admin panel.
+
+#### 6. Contact Form Functionality
+As a customer, I want to send inquiries through a contact form, so that I can communicate directly with the restaurant.
+
+* The contact form includes fields for name, email, and message.
+Upon submission, the message is sent to the admin email.
+* A "Thank You" page is displayed after successful submission.
+* Errors in form submission display appropriate messages.
+
+#### 7. Authentication
+As a user, I want to create an account to manage my personal information.
+
+* Users can sign up with a username, email, and password.
+* Logged-in users can write, edit, and delete their own comments.
+* Logged-in users can use the LIKE button.
+* Admin users can manage accounts through the Django admin panel.
+
+#### 8. Menu Management
+As a restaurant manager, I want to add, edit, or delete menu items, so that I can keep the menu up-to-date.
+
+* Admin users can log in to the Django admin panel.
+* Menu items can be added, edited, or deleted from the database via the admin panel.
+* Menu items include fields for name, description, price, category, and photo upload.
+* Changes to the menu are immediately reflected on the website.
 
 - - -
 
 ## Design
 ### Color Scheme
 
-The “CURRY LOVERS” website utilizes a warm and earthy color palette that reflects the rich and hearty nature of curry dishes.
-The dominant color, #D77921, is a vibrant orange that evokes the warmth and spice of curry, making it ideal for capturing the essence of the brand. Complementing this are the deep, chocolatey brown tones of #3A2A2A, which add a sense of richness and depth to the design. The darker gray hues, #3A3A3A and #505050, provide a strong, neutral foundation that balances the more intense colors, while #696969 offers a softer contrast. Finally, the light gray #F9F9F9 serves as a clean and minimal backdrop, ensuring readability and a modern aesthetic. Together, these colors create a cohesive and appetizing visual experience, perfectly suited to a website dedicated to curry lovers.
+The **Ramen Bar** website employs a vibrant and appetizing color scheme designed to stimulate the senses and reflect the lively, flavorful experience of enjoying a bowl of ramen. The warm hues of orange (#F57C00), yellow (#FFC107), and red (#DC3545) dominate the palette, evoking energy, passion, and warmth, which are all integral to the dining experience. These colors not only capture the essence of the ramen culture but also enhance the appetite of visitors. The green (#28A745) offers a fresh contrast, symbolizing the wholesome and balanced ingredients often found in ramen dishes. 
+
+Meanwhile, the cool blue (#17A2B8) adds a calming balance to the vibrant tones, maintaining visual harmony throughout the site. For the blog and text-heavy sections, dim gray (#696969) provides a neutral, easy-to-read foundation that complements the vivid colors without overwhelming the viewer. By incorporating Bootstrap’s default colors, the design achieves both consistency and a modern aesthetic, creating a visually delightful experience that mirrors the essence of Ramen Bar.
 
 ![color pallete](/documentation/curry-lovers-palette.webp)
 
+### Brand Logo and Favicon
+
+The Ramen Bar logo is a vibrant and inviting design that reflects the essence of the brand. Featuring a steaming bowl of ramen with chopsticks resting atop, the logo symbolizes the warmth and authenticity of Japanese ramen culture. The intricate details, including the colorful ingredients and dynamic presentation, evoke a sense of appetite and culinary artistry, perfectly aligning with the restaurant's mission.
+
+The favicon, a simple yet bold "RB" in a warm orange and dim gray color scheme, complements the logo while providing a clean and professional representation of the brand in browser tabs and bookmarks. Together, the logo and favicon create a cohesive visual identity, enhancing the brand's recognition and appeal to ramen enthusiasts.
+
 ### Typography
 
-The Curry Lovers website features Poppins for headings, adding a modern, elegant touch that elevates the overall design. This font choice contributes to a clean, contemporary look, perfect for showcasing the website’s vibrant content.
+The Ramen Bar website features Berkshire Swash for headings, infusing a touch of playfulness and charm into the design. This decorative serif font evokes the warmth and authenticity of a cozy ramen shop, making it the perfect choice for a casual dining experience. The flowing, hand-crafted appearance of Berkshire Swash reflects the artistry behind crafting a perfect bowl of ramen, tying the typography to the site's theme of comfort, culture, and delicious food.
 
-![poppins-title](/documentation/poppins-title.webp)
+![Berkshire Swash-title](/documentation/poppins-title.webp)
 
-Roboto is used for body text, ensuring excellent readability across all devices. This versatile font complements the Poppins headings, making the content easily accessible and visually appealing. Both fonts are particularly well-suited for food-related designs, enhancing the inviting nature of the site.
+For body text, Open Sans ensures clarity and readability, creating a welcoming and approachable vibe for visitors. Its clean, modern style complements the dynamic Berkshire Swash headings, providing a harmonious balance between tradition and contemporary design. Together, these fonts enhance the inviting and casual feel of the Ramen Bar website, making it easy for users to explore menus, engage with blogs, and immerse themselves in the warm atmosphere of ramen culture.
 
-![rototo](/documentation/roboto.webp)
+![Open Sans](/documentation/roboto.webp)
 
 ### Imagery
 
-High-quality images of Japanese curry dishes and related visuals are used throughout the site to engage users and provide a mouthwatering experience. These images are integral to the design, helping to convey the rich and comforting nature of the dishes featured on the site.
+The Ramen Bar website features high-quality images of steaming bowls of ramen, fresh ingredients, and inviting restaurant interiors to immerse users in the warm and flavorful world of ramen. These visuals are carefully chosen to evoke a sense of comfort and satisfaction, showcasing the vibrant colors, textures, and artistry that define this beloved dish. By integrating these enticing images throughout the site, the design not only enhances engagement but also captures the casual and welcoming atmosphere of a ramen bar, making every visitor feel closer to their next delicious meal.
 
 ### Wireframes
 Here are the wireframes I have prepared to illustrate the user interface design across different devices—mobile, tablet, and desktop—ensuring a consistent and optimized user experience for each screen size.
 
 `The Home Page`
-![home](/documentation/curry-lovers-home.webp)
+![index](/documentation/curry-lovers-home.webp)
 
-`The History Page`
-![history](/documentation/curry-lovers-history.webp)
+`The Phylosophy Page`
+![phylosophy](/documentation/curry-lovers-history.webp)
 
-`The Recipes Page`
-![recipes](/documentation/curry-lovers-recipes.webp)
+`The Menu Page`
+![menu](/documentation/curry-lovers-recipes.webp)
 
-`The Membership Page`
-![membership](/documentation/curry-lovers-membership.webp)
+`The Reservation Page`
+![reservation](/documentation/curry-lovers-membership.webp)
 
-`The Thank-you Page`
-![thank-you](/documentation/curry-lovers-thank-you.webp)
+`The Contact Page`
+![contact](/documentation/curry-lovers-thank-you.webp)
 
-`The 404 Page`
-![404](/documentation/curry-lovers-404.webp)
+`The Blog Page`
+![blog](/documentation/curry-lovers-404.webp)
 
 ### Features 
 
-The site includes key pages such as the Home Page, History Page, Recipes Page, Memberships Page, Thank-you Page, and a 404 Page, each designed with a consistent style and user-centric approach. The layout of these pages is straightforward, allowing users to find information quickly and easily.
+The Ramen Bar website includes a variety of key pages, each designed to provide a seamless and engaging user experience:
 
-### The Home Page
 ![index](/documentation/home-page.webp)
-The Home Page serves as the welcoming gateway to the Curry Lovers website, offering users an overview of what the site has to offer. It features a visually appealing hero section with enticing images of Japanese curry, a brief introduction to the site’s purpose, and easy navigation links to the key sections of the site. The Home Page is designed to engage visitors immediately, providing quick access to popular recipes, latest updates, and an invitation to explore more about Japanese curry.
+* Home Page: Welcomes visitors with vibrant imagery, an overview of the new menu, our three pillars of mission, and quick access to essential features such as reservations and blogs.
 
-### The History Page
-![history](/documentation/history-page.webp)
-The History Page provides users with an in-depth look at the origins and evolution of Japanese curry. It features well-researched content presented in a narrative style, accompanied by historical images and timelines. This page aims to educate users about the cultural significance of Japanese curry, making it not just a culinary delight but also a meaningful part of Japan’s culinary heritage.
+![index](/documentation/home-page.webp)
+* Menu Page: Displays a categorized list of ramen dishes, starters, and more, complete with descriptions, prices, and photos, allowing users to explore the offerings in detail.
 
-### The Recipes Page
-![recipes](/documentation/recipes-page.webp)
-The Recipes Page is the heart of the Curry Lovers website, offering a curated selection of Japanese curry recipes for users of all skill levels. Each recipe includes detailed instructions, ingredient lists, and tips for perfecting the dish. The page is organized for easy navigation, allowing users to filter recipes by ingredients, difficulty, or cooking time, making it simple to find the perfect recipe to try at home.
+![index](/documentation/home-page.webp)
+* Reservation Page: Enables users to easily book a table with a simple form, complete with a confirmation message upon successful submission.
 
-### The Membership Page
-![membership](/documentation/membership-page.webp)
-The Membership Page invites users to join the Curry Lovers community. It highlights the benefits of membership, such as access to exclusive content, personalized recipe recommendations, and the ability to connect with other curry enthusiasts. This page includes an easy-to-follow signup process, encouraging users to become a part of the growing community of Japanese curry lovers.
+![index](/documentation/home-page.webp)
+* Blog Page: Features articles on ramen culture, recipes, and the history of ramen, along with options for logged-in users to comment, edit, delete, and like posts.
 
-### The Thank-you Page
-![thank-you](/documentation/thank-you-page.webp)
-The Thank-you Page is designed to acknowledge and appreciate users who have taken actions for signing up for membership. It features a warm message of gratitude, reinforcing the community-oriented spirit of Curry Lovers. 
+![index](/documentation/home-page.webp)
+* Contact Page: Provides a user-friendly contact form for inquiries, ensuring direct communication with the restaurant.
 
-### THe 404 Page
-![404](/documentation/404-page.webp)
-The 404 Page is a custom error page that appears when a user navigates to a non-existent page on the site. Instead of a standard error message, this page features a friendly and creative design that keeps the tone light and inviting. It provides clear navigation options to help users quickly find their way back to relevant content, ensuring a smooth and frustration-free user experience.
+![index](/documentation/home-page.webp)
+* Reservation Cancellation Page: Allows users to cancel their reservations using a reservation number, ensuring flexibility and convenience.
+
+![index](/documentation/home-page.webp)
+* Authentication Pages: Includes login, signup, and account management options, offering secure access to personalized features.
+
+![index](/documentation/home-page.webp)
+* Thank-You Page: Displays a confirmation message after successful actions like form reservations.
 
 ## Future Implementations 
 
-The Curry Lovers website will be enhanced with the following features to provide users with a richer and more informative experience:
+The Ramen Bar website will be expanded with the following features to provide users with an even more engaging and comprehensive experience:
 
-* Recipe Database: A comprehensive, searchable database of curry recipes. Users can filter by region (e.g., Indian, Thai), spice level (mild, medium, hot), and dietary preferences (vegan, gluten-free). This allows users to easily discover new recipes tailored to their tastes and dietary needs.
+1. Newsletter Subscription
+A dedicated newsletter feature will allow users to subscribe and receive updates on the latest menu items, blog posts, special events, and promotions directly in their inbox. This will help build a stronger connection with the community and keep users informed about all things Ramen Bar.
 
-* Nutritional Information: Detailed nutritional breakdown for each recipe, including calories, macronutrients (protein, fat, carbohydrates), and potential allergens. This helps users make informed dietary choices.
+2. Blog Categories and Slugs
+To enhance blog functionality, we plan to introduce categories and slugs. Users will be able to filter blog posts by topics such as "Ramen Recipes," "Ramen Culture," and "Travel in Japan." Additionally, unique slugs for each post will improve SEO and make it easier to share and access specific articles.
 
-* Curry History and Culture Section: An educational section exploring the origins and cultural significance of curry in various parts of the world. This feature enhances user understanding and appreciation of the diversity of curry.
+3. Ramen Build-a-Bowl Feature
+A custom "Build-a-Bowl" interactive feature will allow users to virtually create their ideal ramen bowl by selecting broth, noodles, toppings, and protein options. This feature will educate users about different ramen components and could potentially integrate with reservations or takeout options in the future.
+
+4. Interactive Map of Ramen Shops in Japan
+An interactive map showcasing the best ramen shops in Japan, categorized by region, will be added. This feature will appeal to travel enthusiasts and ramen lovers alike, helping them explore Japan's rich ramen culture.
+
 
 - - - 
 
 ## Technologies Used
 ### Languages Used
 
-The Curry Lovers website is built using a combination of modern web development languages to ensure a responsive, user-friendly, and visually appealing experience:
+The Ramen Bar website is developed using a modern stack of web technologies to deliver a responsive, interactive, and visually appealing experience:
 
-- HTML5: Used for structuring the content and layout of the website, ensuring semantic and accessible design.
-
-- CSS3: Employed to style the website, including the color schemes, typography, and layout, making the site visually engaging and cohesive.
-
-- JavaScript: Utilized to add interactivity and dynamic elements to the site, enhancing the user experience with features like responsive navigation, form validation, and interactive content.
+* HTML5: Used to structure the content and layout of the website, ensuring a semantic, accessible, and user-friendly design.
+* CSS3: Employed to style the website with a cohesive color scheme, typography, and layout, creating a visually engaging and professional look.
+* JavaScript: Utilized to enhance interactivity and add dynamic elements, such as responsive navigation menus, form validation, and other interactive features.
+* Bootstrap: Integrated to streamline the development of a responsive design, ensuring that the website looks great on devices of all sizes and resolutions.
+* Python: Powers the backend logic of the application, handling core functionality like data processing, user authentication, and server-side operations.
+* Django: A robust framework used to manage the backend infrastructure, including database interactions, user management, and seamless integration of dynamic content.
 
 ### Frameworks, Libraries & Programs Used
 
-* Balsamiq: Created wireframes for the site.
-* GitHub: Version control and file storage.
-* GitPod: IDE for site development.
-* Google Fonts: Imported custom fonts.
-* Google Developer Tools: Debugging, testing features, and ensuring responsiveness.
-* TinyPNG: Image compression.
-* Birme: Image resizing and webp format conversion.
-* Favicon.io: Favicon creation.
-* Am I Responsive?: Displayed website previews across various devices.
-* Grammarly: Checked spelling and grammar.
+* Balsamiq: Used to create wireframes, providing a clear visual representation of the site’s layout and structure before development began.
+* GitHub: Utilized for version control, storing code, and collaboration during the development process.
+* GitPod: The integrated development environment (IDE) used for writing, testing, and debugging code throughout the project.
+* Google Fonts: Imported custom fonts, specifically Berkshire Swash and Open Sans, to enhance the site’s typography and visual appeal.
+* Google Developer Tools: Leveraged for debugging, testing functionality, and ensuring responsiveness across different screen sizes.
+* dbdiagram: Used to design and visualize the database structure, ensuring efficient relationships between tables, such as for reservations, users, menu items, blogs, and comments.
+* Cloudinary: Served as the image hosting platform, enabling secure storage and optimization of images for the website.
+* Favicon.io: Created the website favicon, adding a professional touch to the browser tab and enhancing brand recognition.
+* Am I Responsive?: Verified how the site appears across various devices, showcasing the responsive design and ensuring a consistent user experience.
+* Grammarly: Checked spelling and grammar across the site content, ensuring polished and professional text presentation.
+
 
 - - - 
 
 ## Deployment & Local Development
-### Deployment
+### Repository Deployment via Heroku
 
-To deploy the Curry Lovers website on GitHub Pages, I followed these steps:
+To deploy the project live, Heroku was used. Here are the steps:
 
-1. Pushed the project to the GitHub repository: [https://github.com/micmic210/curry-lovers](https://github.com/micmic210/curry-lovers).
-2. Navigated to the repository on GitHub and clicked on the “Settings” tab.
-3. Scrolled down to the “Pages” section within the Settings.
-4. Under the “Source” dropdown menu, selected the main branch where the project’s code is stored.
-5. Clicked “Save” after selecting the branch.
-6. The site was successfully deployed and became live at [https://micmic210.github.io/curry-lovers/](https://micmic210.github.io/curry-lovers/).
+1. Create a New App
 
-### Local Development
+* Log into the Heroku dashboard and click New, then select Create New App from the dropdown menu.
+* On the next page, enter the App Name and select a Region, then click Create App.
 
-#### How to Fork
+2. Configure the App Settings
+* Navigate to the Settings tab and click Reveal Config Vars.
+* Add the following configuration variables:
+    * PORT: Set to 8000.
+    * CLOUDINARY_URL: For image hosting.
+    *DATABASE_URL: For connecting to the Postgres database.
 
-1.	Log in (or sign up) to GitHub.
-2.	Navigate to the repository for this project: micmic210/curry-lovers.
-3.	Click the “Fork” button in the top right corner of the repository page.
-4.	GitHub will create a copy of the repository under your account.
+3. Connect to GitHub
 
-#### How to Clone
+* Go to the Deploy tab and select GitHub – Connect to GitHub.
+* Search for your repository by name and click Connect once located.
 
-1.	Log in (or sign up) to GitHub.
-2.	Navigate to the repository for this project: micmic210/curry-lovers.
-3.	Click on the “Code” button, and choose whether you would like to clone using HTTPS, SSH, or GitHub CLI. Copy the link provided for your preferred method.
-4.	Open the terminal in your code editor and navigate to the directory where you want to clone the repository.
-5.	Type git clone into the terminal, followed by the link you copied in step 3. Press Enter.
-Example for HTTPS:
-git clone https://github.com/YOUR-USERNAME/curry-lovers.git
-6. Replace YOUR-USERNAME with your GitHub username. This will create a local copy of the repository on your machine, allowing you to work on it offline.
+4. Deployment Method
+
+* Choose between:
+    * Manual Deployment: Deploy the app manually when ready by clicking the Deploy Branch button.
+    * Automatic Deployment: Automatically redeploy the app whenever changes are pushed to the main branch on GitHub.
+
+* Launch the Application
+    * Once the build is complete, the app can be launched by clicking the Open App button that appears below the build information or in the top-right corner of the Heroku dashboard.
+
 
 - - - 
 
@@ -213,7 +286,7 @@ Fix: Replaced the const keyword with var to ensure compatibility with all JavaSc
 ## Credits
 ### Code Used
 
-The Curry Lovers website incorporates code from the Love Running project, a lesson provided by Code Institute. Specifically, I utilized the structure and styling of the header area, including the navigation bar and hamburger menu functionality, to ensure a responsive and user-friendly experience across all devices. These elements were adapted and customized to fit the design and needs of the Curry Lovers site.
+The Ramen Bar website incorporates code from Code Institute’s Blog project, particularly for the structure and Bootstrap styling of the blog section. These elements were adapted and customized to align with the design and functionality needs of the site, ensuring a seamless and engaging user experience.
 
 ### Content
 This project includes content adapted or referenced from the following sources:
@@ -227,23 +300,17 @@ This project includes content adapted or referenced from the following sources:
 ### Media 
 This project includes images borrowed from the following sources:
 
-- Photo-ac.com: activity, curry-rice-main, fukujinzuke, rakkyo  
-- Unsplash: baked-curry, croque, curry-bread, curry-pod,curry-rice, curry-udon, members, mission
-- CANVA: favicon, curry-variation, wallpaper   
+- Photo-ac.com: images used in blog section 
+- Unsplash: menu images, other pages
 
 ### Acknowledgments  
-I would like to express my gratitude to Mr. Jubril Akolade, my mentor from Code Institute, for his guidance and support. Special thanks to my husband, daughter, sister, and nephews for their invaluable feedback and advice during the development of this website.
+I would like to extend my heartfelt gratitude to Mr. Jubril Akolade, my mentor from Code Institute, for his invaluable guidance, encouragement, and insightful feedback throughout the development of this project. His expertise and support were instrumental in bringing this website to life.
 
-### Recipe References:
-* The Basic Curry Rice recipe is based on common Japanese culinary practices.
-* The Curry Bread recipe was developed using standard practices detailed in Tomiz Recipe - Basic Curry Bread.
-* The Curry Udon, Baked Curry, and Curry Croquette recipes were adapted from traditional family recipes, with adjustments made to suit this project.
-	
-### Written Descriptions or Explanations:
-* Portions of the historical overview and development of Japanese curry were enhanced using content from Wikipedia and other resources. 
-* Cultural insights and variations of Japanese curry were based on information from sources such as Tasting Table and Japan Food Guide. 
+I would also like to thank the tutors at Code Institute for their patience, assistance, and invaluable advice throughout the learning and development process. Their dedication and support have been essential to my growth as a developer.
 
+A special thanks to my husband and my daughter for their unwavering support, constructive feedback, and encouragement during this journey. Their advice and suggestions greatly contributed to the success of this project.
 
+ 
 
 Debug Section
 
