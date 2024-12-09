@@ -7,11 +7,6 @@ Join us as we explore mouthwatering recipes, offer expert tips, and connect with
 
 Here's the website: [Ramen Bar](https://ramen-bar-booking-app-8cf486e28254.herokuapp.com/) 
 
-## Contents 
-
-### Updated Directory with Hyperlinks and Numbering
-
-Here’s an updated version of your directory with correct numbering and hyperlinks that match your content for easy navigation:
 
 ---
 
@@ -51,69 +46,6 @@ Ramen Bar is crafted to provide an engaging and seamless user experience, making
 
 The Ramen Bar website focuses on providing a user-friendly and engaging experience. Visitors can browse a categorized menu, make and cancel reservations, and contact the restaurant through an intuitive interface. A blog section allows users to explore articles on ramen culture and engage through comments and likes. Registered users benefit from additional features such as comment management and personalization. Admins can efficiently manage menu items, reservations, and blog content via the Django admin panel. These features ensure a seamless and enjoyable experience for both users and administrators.
 
-
-#### 1. User-Friendly Frontend Design
-As a user, I want the website to have a visually appealing and intuitive design so that I can easily navigate and interact with it.
-
-* Each page has a consistent design theme.
-* Clear and intuitive navigation menus are provided.
-* Reservation and contact forms are visually appealing and easy to use.
-
-#### 2. Menu Display
-As a customer, I want to view the menu online, so that I can see the available dishes and their details.
-
-* Menu items are displayed by categories (e.g., Ramen, Starters).
-* Each menu item includes a name, description, price, and photo.
-* An "All Menu" button allows customers to view all items across categories.
-
-#### 3. Reservation Functionality
-As a customer, I want to reserve a table online, so that I can secure a spot in the restaurant without waiting.
-
-* Customers can fill out a reservation form with fields for name, email, phone number, date, time, and number of guests.
-* Upon successful form submission, a confirmation message is displayed.
-* Reservations are recorded in the database and accessible via the admin panel.
-
-#### 4. Reservation Cancellation
-As a user, I want to cancel my reservation using my reservation number online so that I can modify my plans without contacting support.
-
-* The website has a "Cancel Reservation" option, accessible from the homepage.
-* Users must enter their reservation number for cancellation.
-The system validates the entered reservation number against existing records.
-* If the reservation number is valid, the user sees the cancel button.
-Upon successful cancellation, the system displays a confirmation message.
-* If the reservation number is invalid, an error message informs the user.
-
-#### 5. Blog Feature
-As a user, I want to read blog posts, leave comments, and like posts so that I can engage more deeply with the site.
-
-* Users can view the latest blog posts on a blog list page.
-* Users can read detailed blog posts on a blog detail page.
-* Logged-in users can leave comments and like posts.
-* Blog posts and comments can be managed through the admin panel.
-
-#### 6. Contact Form Functionality
-As a customer, I want to send inquiries through a contact form, so that I can communicate directly with the restaurant.
-
-* The contact form includes fields for name, email, and message.
-Upon submission, the message is sent to the admin email.
-* A "Thank You" page is displayed after successful submission.
-* Errors in form submission display appropriate messages.
-
-#### 7. Authentication
-As a user, I want to create an account to manage my personal information.
-
-* Users can sign up with a username, email, and password.
-* Logged-in users can write, edit, and delete their own comments.
-* Logged-in users can use the LIKE button.
-* Admin users can manage accounts through the Django admin panel.
-
-#### 8. Menu Management
-As a restaurant manager, I want to add, edit, or delete menu items, so that I can keep the menu up-to-date.
-
-* Admin users can log in to the Django admin panel.
-* Menu items can be added, edited, or deleted from the database via the admin panel.
-* Menu items include fields for name, description, price, category, and photo upload.
-* Changes to the menu are immediately reflected on the website.
 
 - - -
 
