@@ -20,7 +20,7 @@ Here's the website: [Ramen Bar](https://ramen-bar-booking-app-8cf486e28254.herok
    - [Typography](#typography)
    - [Imagery](#imagery)
    - [Wireframes](#wireframes)
-   - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+   - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram)
    - [Features](#features)
 3. [Future Implementations](#future-implementations)
 4. [Technologies Used](#technologies-used)
@@ -35,10 +35,9 @@ Here's the website: [Ramen Bar](https://ramen-bar-booking-app-8cf486e28254.herok
    - [Content](#content)
    - [Media](#media)
    - [Acknowledgments](#acknowledgments)
-8. [Debug History](#debug-history)
 
 ---
-- - - 
+
 
 ## User Experience
 Ramen Bar is crafted to provide an engaging and seamless user experience, making every visit to the site a delightful journey into the world of ramen. The intuitive and visually appealing layout ensures effortless navigation, allowing users to make and manage reservations, cancel bookings, or get in touch with ease. Dive into blogs that celebrate ramen culture, its ties to Japan, and culinary inspiration, all presented with captivating visuals and a clean design. For logged-in users, the experience is elevated with interactive features like the ability to write, edit, and delete comments, as well as express appreciation through LIKE buttons. Ramen Bar combines functionality and aesthetics to create a community-centric platform that’s as warm and inviting as a bowl of ramen.
@@ -72,11 +71,11 @@ The favicon, a simple yet bold "RB" in a warm orange and dim gray color scheme, 
 
 The Ramen Bar website features Berkshire Swash for headings, infusing a touch of playfulness and charm into the design. This decorative serif font evokes the warmth and authenticity of a cozy ramen shop, making it the perfect choice for a casual dining experience. The flowing, hand-crafted appearance of Berkshire Swash reflects the artistry behind crafting a perfect bowl of ramen, tying the typography to the site's theme of comfort, culture, and delicious food.
 
-![Berkshire Swash-title](/documentation/)
+![Berkshire Swash-title](/documentation/berkshire.png)
 
 For body text, Open Sans ensures clarity and readability, creating a welcoming and approachable vibe for visitors. Its clean, modern style complements the dynamic Berkshire Swash headings, providing a harmonious balance between tradition and contemporary design. Together, these fonts enhance the inviting and casual feel of the Ramen Bar website, making it easy for users to explore menus, engage with blogs, and immerse themselves in the warm atmosphere of ramen culture.
 
-![Open Sans](/documentation/roboto.webp)
+![Open Sans](/documentation/open.png)
 
 ### Imagery
 
@@ -106,7 +105,7 @@ Here are the wireframes I have prepared to illustrate the user interface design 
 ### Entity Relationship Diagram
 
 `ERD`
-![ERD](/documentation/ramen-bar-erd.png)
+![Entity Relationship Diagram (ERD)](/documentation/ramen-bar-erd.png)
 
 ### Features 
 
@@ -253,7 +252,16 @@ For a detailed breakdown of tests performed and results, please refer to [TESTIN
 
 The Ramen Bar website incorporates code from Code Institute’s Blog project, particularly for the structure and Bootstrap styling of the blog section. These elements were adapted and customized to align with the design and functionality needs of the site, ensuring a seamless and engaging user experience.
 
+
 ### Content
+
+You can refer to the following YouTube tutorials to gain insights into building a Django reservation system:
+
+- [Django Reservation System Tutorial (YouTube)](https://www.youtube.com/watch?v=Zu-cAgp7Hzw): This tutorial provides a step-by-step guide to creating a reservation system using Django. It covers essential concepts, including setting up models, views, and templates for managing reservations effectively.
+
+- [Django Reservation System Guide (YouTube)](https://www.youtube.com/watch?app=desktop&v=U8qqkJXLoRQ&t=11s): This video demonstrates how to build and customize a Django-based reservation system, focusing on user-friendly design and backend functionality.
+
+These resources are helpful for beginners and developers looking to enhance their Django project skills.
 
 
 ### Media 

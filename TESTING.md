@@ -7,16 +7,25 @@ Visit the site here: [RAMEN BARS](https://ramen-bar-booking-app-8cf486e28254.her
 
 - - - 
 
-## Contents
-* [Automated Testing](#automated-testing)
-	* [W3C Validator](#w3c-validator)
-	* [JavaScript Validator](#javascript-validator)
-	* [Lighthouse](#lighthouse)
-* [Manual Testing](#manual-testing)
-	* [Testing User Stories](#testing-user-stories)
-	* [Full Testing](#full-testing)
+### Updated Table of Contents with Hyperlinks
 
-- - -
+Here’s the fixed table of contents for your **README** with properly formatted hyperlinks that align with your detailed content:
+
+---
+
+## Contents
+
+1. [Automated Testing](#automated-testing)
+   - [W3C Validator](#w3c-validator)
+   - [JavaScript Validator](#javascript-validator)
+   - [Lighthouse](#lighthouse)
+2. [Manual Testing](#manual-testing)
+   - [Testing User Stories](#testing-user-stories)
+3. [Admin Testing](#admin)
+4. [User Testing](#user)
+5. [Debug History](#debug-history)
+
+---
 
 ## Automated Testing
 
@@ -43,14 +52,13 @@ HTML Files:
 * 404.html: Passed validation with no errors.
 
 CSS File:
-![css](/documentation/css.webp)
+[css](/documentation/css.webp)
 * style.css: Passed validation with no errors.
 
 ### JavaScript Validator 
-![jshint](https://jshint.com/) was used to validate the JavaScript.
-* Metrics: 
+[jshint](https://jshint.com/) was used to validate the JavaScript.
 
-![javascript.js](/documentation/jshint-result.webp)
+![javascript.js](/documentation/hs.webp)
 
 - - - 
 
