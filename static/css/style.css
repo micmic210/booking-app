@@ -301,7 +301,7 @@ header {
 
 /* === Common Header === */
 #common-header {
-  background: url('../img/header-image.webp') center / cover no-repeat;
+  background: url('/static/img/header-image.webp') center / cover no-repeat;
   height: 50vh;
   position: relative;
   color: white;
