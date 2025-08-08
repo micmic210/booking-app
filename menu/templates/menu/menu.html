@@ -27,7 +27,7 @@ Menu - Ramen Bar
             <!-- Menu Category Buttons -->
             <div class="d-flex justify-content-center mb-4" style="flex-wrap: wrap; gap: 20px">
                 <button class="btn menu-btn active mr-3" data-target="#all">All</button>
-                <button class="btn menu-btn active mr-3" data-target="#ramens">Ramen</button>
+                <button class="btn menu-btn mr-3" data-target="#ramens">Ramen</button>
                 <button class="btn menu-btn mr-3" data-target="#starters">Starters</button>
                 <button class="btn menu-btn" data-target="#appetizers">Appetizers</button>
             </div>
@@ -97,4 +97,38 @@ Menu - Ramen Bar
         </div>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.menu-btn');
+  const categories = document.querySelectorAll('.menu-category');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove "active" class from all buttons
+      buttons.forEach(b => b.classList.remove('active'));
+      // Add "active" class to the clicked button
+      btn.classList.add('active');
+
+      const target = btn.getAttribute('data-target');
+      if (target === '#all') {
+        // Show all categories
+        categories.forEach(sec => sec.classList.remove('d-none'));
+      } else {
+        // Show only the selected category, hide the others
+        categories.forEach(sec => {
+          if ('#' + sec.id === target) {
+            sec.classList.remove('d-none');
+          } else {
+            sec.classList.add('d-none');
+          }
+        });
+      }
+    });
+  });
+
+  // Set default view to "All"
+  const allBtn = document.querySelector('.menu-btn[data-target="#all"]');
+  if (allBtn) allBtn.click();
+});
+</script>
 {% endblock %}
