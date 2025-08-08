@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
+{% load cloudinary %}
 
 {% block title %}
 Menu - Ramen Bar
 {% endblock %}
 
 {% block content %}
-
 <!-- Common Header Section -->
 <section id="common-header" class="d-flex align-items-center justify-content-center position-relative text-white">
     <div class="overlay"></div>
@@ -22,6 +22,7 @@ Menu - Ramen Bar
             <p>A Symphony of Flavors</p>
             <h2>Food Menu</h2>
         </div>
+
         <div class="menu-tab">
             <!-- Menu Category Buttons -->
             <div class="d-flex justify-content-center mb-4" style="flex-wrap: wrap; gap: 20px">
@@ -30,13 +31,15 @@ Menu - Ramen Bar
                 <button class="btn menu-btn mr-3" data-target="#starters">Starters</button>
                 <button class="btn menu-btn" data-target="#appetizers">Appetizers</button>
             </div>
+
             <!-- Menu Content -->
             <div id="menu-content">
                 <!-- Ramen Menu -->
                 <div id="ramens" class="menu-category">
                     {% for item in ramen_items %}
                     <div class="menu-item d-flex align-items-center justify-content-center flex-column flex-sm-row mb-4">
-                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
+                        <img src="{% cloudinary_url item.image.public_id secure=true format='webp' width=100 height=100 crop='fill' gravity='auto' %}"
+                             alt="{{ item.name }}" class="menu-img img-fluid rounded"
                              style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="menu-details flex-grow-1 ms-3">
                             <div class="menu-title-container d-flex justify-content-between align-items-center">
@@ -55,7 +58,8 @@ Menu - Ramen Bar
                 <div id="starters" class="menu-category">
                     {% for item in starters_items %}
                     <div class="menu-item d-flex align-items-center justify-content-center flex-column flex-sm-row mb-4">
-                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
+                        <img src="{% cloudinary_url item.image.public_id secure=true format='webp' width=100 height=100 crop='fill' gravity='auto' %}"
+                             alt="{{ item.name }}" class="menu-img img-fluid rounded"
                              style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="menu-details flex-grow-1 ms-3">
                             <div class="menu-title-container d-flex justify-content-between align-items-center">
@@ -74,7 +78,8 @@ Menu - Ramen Bar
                 <div id="appetizers" class="menu-category">
                     {% for item in appetizers_items %}
                     <div class="menu-item d-flex align-items-center justify-content-center flex-column flex-sm-row mb-4">
-                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-img img-fluid rounded"
+                        <img src="{% cloudinary_url item.image.public_id secure=true format='webp' width=100 height=100 crop='fill' gravity='auto' %}"
+                             alt="{{ item.name }}" class="menu-img img-fluid rounded"
                              style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="menu-details flex-grow-1 ms-3">
                             <div class="menu-title-container d-flex justify-content-between align-items-center">
@@ -92,5 +97,4 @@ Menu - Ramen Bar
         </div>
     </div>
 </section>
-
 {% endblock %}
